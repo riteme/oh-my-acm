@@ -1,0 +1,193 @@
+@font-face {
+    font-family: "Source Han Sans";
+    src: url("fonts/Source-Han-Sans.subset.otf");
+}
+
+@font-face {
+    font-family: "Source Han Serif";
+    src: url("fonts/Source-Han-Serif.subset.otf");
+}
+
+@font-face {
+    font-family: "Consolas";
+    src: url("fonts/Consolas.ttf");
+}
+
+@font-face {
+    font-family: "Consolas";
+    src: url("fonts/Consolas Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Consolas";
+    src: url("fonts/Consolas Italic.ttf");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Consolas";
+    src: url("fonts/Consolas Bold Italic.ttf");
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Computer Modern";
+    src: url("fonts/cmunrm.otf");
+}
+
+@font-face {
+    font-family: "Computer Modern";
+    src: url("fonts/cmunti.otf");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Computer Modern Bold";
+    src: url("fonts/cmunbx.otf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Computer Modern Bold";
+    src: url("fonts/cmunbi.otf");
+    font-style: italic;
+    font-weight: bold;
+}
+
+body {
+    font-size: 35px;
+    font-family: "Computer Modern", "Source Han Serif SC";
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-family: "Segoe UI", "Source Han Sans SC";
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+h4 {
+    font-size: 1.1em;
+    text-indent: 0.5em;
+}
+
+h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
+    font-family: "Computer Modern Bold";
+    font-size: 1.2em;
+}
+
+i, em {
+    font-family: "Segoe UI", "Source Han Serif SC";
+}
+
+b, strong {
+    font-weight: normal;
+    font-family: "Segoe UI", "Source Han Sans SC";
+}
+
+p, li {
+    text-indent: 2em;
+    text-align: justify;
+    margin: 0;
+}
+
+a {
+    color: black;
+}
+
+ul, ol {
+    margin: 0.05em 2.3em;
+}
+
+ul p, ol p, ul li, ol li {
+    text-indent: 0;
+}
+
+hr {
+    margin: 1em 0;
+    border: 0;
+    border-bottom: 3px dashed black;
+}
+
+.code-block {
+    border: 1px solid black;
+    padding: 0.2em;
+    margin: 0 0.5em;
+    line-height: 1em;
+}
+
+.line {
+    display: flex;
+}
+
+.number, .code {
+    display: inline-block;
+    font-family: Consolas;
+    white-space: pre-wrap;
+}
+
+.number {
+    width: 1.8em;
+    text-align: right;
+    margin-right: 0.5em;
+    color: gray;
+}
+
+.code {
+    width: calc(100% - 2.3em);
+    word-break: break-all;
+}
+
+.keyword, .preprocessor {
+    font-weight: bold;
+}
+
+.pod {
+    font-style: italic;
+}
+
+.non-ascii {
+    font-size: 0.9em;
+    line-height: 0;
+}
+
+.comment {
+    color: grey;
+}
+
+.katex {
+    font-size: 1em;
+}
+
+.katex-display {
+    margin: 0;
+}
+
+@media print {
+    .page-spliter {
+        page-break-after: always;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        position: relative;
+        page-break-after: avoid;
+    }
+
+    .katex .mtable .vertical-separator {
+        min-width: 1px;
+    }
+
+    .katex .mfrac .frac-line,
+    .katex .overline .overline-line,
+    .katex .underline .underline-line,
+    .katex .hline,
+    .katex .hdashline,
+    .katex .rule {
+        min-height: 1px;
+    }
+}

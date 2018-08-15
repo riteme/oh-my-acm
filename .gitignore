@@ -1,2 +1,5 @@
 libclang.so
+*.html
+*.pdf
+*.pyc
 __pycache__/*

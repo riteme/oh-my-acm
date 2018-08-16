@@ -3,3 +3,4 @@ test*
 *.pdf
 *.pyc
 __pycache__/*
+database/*

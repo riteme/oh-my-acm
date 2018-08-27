@@ -1,11 +1,11 @@
 @font-face {
-    font-family: "Source Han Sans";
-    src: url("fonts/Source-Han-Sans.subset.otf");
+    font-family: "Source Han Sans SC";
+    src: url("fonts/Source-Han-Sans.otf");
 }
 
 @font-face {
-    font-family: "Source Han Serif";
-    src: url("fonts/Source-Han-Serif.subset.otf");
+    font-family: "Source Han Serif SC";
+    src: url("fonts/Source-Han-Serif.otf");
 }
 
 @font-face {
@@ -108,6 +108,10 @@ ul p, ol p, ul li, ol li {
     text-indent: 0;
 }
 
+pre, code {
+    font-family: Consolas;
+}
+
 hr {
     margin: 1em 0;
     border: 0;
@@ -127,7 +131,7 @@ hr {
 
 .number, .code {
     display: inline-block;
-    font-family: Consolas;
+    font-family: Consolas, "Source Han Sans SC";
     white-space: pre-wrap;
 }
 

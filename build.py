@@ -296,13 +296,18 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('folder')
     parser.add_argument('-o', '--output', required=True)
+    parser.add_argument('-v', '--verbose', action='store_true')
     parser.add_argument('-q', '--quiet', action='store_true')
     args = parser.parse_args()
+    if args.verbose:
+        config.DISABLE_DEBUG = False
     if args.quiet:
         config.DISABLE_DEBUG = True
+    if args.verbose and args.quiet:
+        WARN('Both "-q" and "-v" are enabled. Default to be quiet.')
 
     if not os.path.isdir(args.folder):
-        ERROR('Failed to open directory "%s"' % folder)
+        ERROR('Failed to open directory "%s"' % args.folder)
         exit(-1)
 
     database = defaultdict(list)

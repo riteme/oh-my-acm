@@ -58,7 +58,7 @@
 
 body {
     font-size: 35px;
-    font-family: "Computer Modern", "Source Han Serif SC";
+    font-family: /*"Computer Modern", */"Source Han Serif SC";
 }
 
 h1, h2, h3, h4, h5, h6 {

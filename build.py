@@ -253,7 +253,7 @@ def parse_cxx(path):
         slices.append((last, line + 1))
     if len(slices) == 0:
         DEBUG('No specific range. Default is the entire file.')
-        slices = [(1, line + 1)]
+        slices = [(config.META_DEFAULT_RANGE_START, line + 1)]
 
     return (''.join(buf), meta, slices)
 
@@ -311,18 +311,23 @@ def main():
         exit(-1)
 
     database = defaultdict(list)
+    used_documents = set()
     curdir = os.getcwd()
-    def callback(arg, dirname, fnames):
+    def search_for_sources(arg, dirname, fnames):
         os.chdir(dirname)
+        cwd = os.getcwd()
         for name in fnames:
             if not os.path.isfile(name):
                 continue
             base, ext = os.path.splitext(name)
             if ext in config.FILE_EXTENSIONS:
                 result = resolve(name)
+                meta = result[-1]
+                if config.META_DESCRIPTION in meta:
+                    used_documents.add(os.path.abspath(os.path.join(cwd, meta[config.META_DESCRIPTION])))
                 database[result.category].append(result)
-    os.path.walk(args.folder, callback, None)
-    os.chdir(curdir)
+        os.chdir(curdir)
+    os.path.walk(args.folder, search_for_sources, None)
 
     INFO('Combining into one document...')
     cnt = 0
@@ -335,6 +340,25 @@ def main():
             cnt += 1
             toc.append(config.TOC_TITLE_TEMPLATE.format(id=cnt, title=doc.title))
             body.append(config.DOCUMENT_TEMPLATE.format(id=cnt, title=doc.title, description=doc.desc, code=doc.code))
+
+    basedir = os.path.join(curdir, args.folder)
+    toc.append(config.TOC_CATEGORY_TEMPLATE.format(category=config.META_DOCUMENT_DEFAULT_CATEGORY))
+    body.append(config.PAGE_SEPARATOR)
+    def search_for_documents(arg, dirname, fnames):
+        os.chdir(dirname)
+        cwd = os.getcwd()
+        for name in fnames:
+            if not os.path.isfile(name):
+                continue
+            base, ext = os.path.splitext(name)
+            if ext in config.DESCRIPTION_EXTENSIONS:
+                path = os.path.abspath(os.path.join(cwd, name))
+                if path not in used_documents:
+                    body.append(config.UNUSED_DOCUMENT_TEMPLATE.format(
+                        title=os.path.relpath(path, start=basedir),
+                        description=parse_markdown(path)))
+        os.chdir(curdir)
+    os.path.walk(args.folder, search_for_documents, None)
 
     DEBUG('Writing into "%s"...' % args.output)
     with open(args.output, 'w') as writer:

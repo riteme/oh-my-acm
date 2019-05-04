@@ -51,9 +51,12 @@ META_CATEGORY = 'category'
 META_DESCRIPTION = 'description'
 META_DEFAULT_TITLE = 'No Title'
 META_DEFAULT_CATEGORY = 'UNCATEGORIZED'
+META_DOCUMENT_DEFAULT_CATEGORY = 'ADDITIONAL DOCUMENTS'
+META_DEFAULT_RANGE_START = 6
 
 # Source File Settings
 FILE_EXTENSIONS = ['.cpp', '.c', '.cxx']
+DESCRIPTION_EXTENSIONS = ['.md', '.mkd', '.markdown']
 ENCODING = 'utf-8'
 TAGSIZE = 4
 
@@ -75,6 +78,9 @@ TOC_TITLE_TEMPLATE = u'<h4><b>{id}</b>　{title}</h4>'
 DOCUMENT_TEMPLATE = u'''<h4><b>{id}.</b> {title}</h4>
 {description}
 {code}'''
+UNUSED_DOCUMENT_TEMPLATE = u'''∘ <code>{title}</code>:
+<div>{description}</div>
+'''
 PAGE_SEPARATOR = u'<hr />'
 WEBPAGE_TEMPLATE = u'''<!DOCTYPE html><html><head>
   <link href="katex/katex.min.css" type="text/css" rel="stylesheet">

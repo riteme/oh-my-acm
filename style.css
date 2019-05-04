@@ -121,7 +121,7 @@ hr {
 .code-block {
     border: 1px solid black;
     padding: 0.2em;
-    margin: 0 0.5em;
+    margin: 0;
     line-height: 1em;
 }
 

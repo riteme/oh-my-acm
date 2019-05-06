@@ -37,7 +37,7 @@ MARKDOWN_EXTENSIONS = [
     'markdown.extensions.toc',
     'markdown.extensions.smart_strong',
     'markdown.extensions.attr_list',
-    #'markdown.extensions.nl2br',
+    'markdown.extensions.nl2br',
     'markdown.extensions.meta',
     #'markdown.extensions.smarty',
     'oh-my-acm.latex',
@@ -75,11 +75,11 @@ BLOCK_END_MARCO = 'ACM_END'
 # Document Settings
 CONTENT_TEMPLATE = u'{toc}{separator}{document}'
 TOC_CATEGORY_TEMPLATE = u'<h3>{category}</h3>'
-TOC_TITLE_TEMPLATE = u'<h4><b>{id}</b>　{title}</h4>'
+TOC_TITLE_TEMPLATE = u'<h4 class="title"><b>{id}</b>. {title}</h4>'
 DOCUMENT_TEMPLATE = u'''<div class="source-code"><h4><b>{id}.</b> {title}</h4>
 {description}
 {code}</div>'''
-UNUSED_DOCUMENT_TEMPLATE = u'''<div class="document">∘ <code>{title}</code>:
+UNUSED_DOCUMENT_TEMPLATE = u'''<div class="document"><h6>∘ <code>{title}</code></h6>
 <div>{description}</div></div>
 '''
 PAGE_SEPARATOR = u'<hr />'

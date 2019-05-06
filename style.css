@@ -1,59 +1,5 @@
-@font-face {
-    font-family: "Source Han Sans SC";
-    src: url("fonts/Source-Han-Sans.otf");
-}
-
-@font-face {
-    font-family: "Source Han Serif SC";
-    src: url("fonts/Source-Han-Serif.otf");
-}
-
-@font-face {
-    font-family: "Consolas";
-    src: url("fonts/Consolas.ttf");
-}
-
-@font-face {
-    font-family: "Consolas";
-    src: url("fonts/Consolas Bold.ttf");
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "Consolas";
-    src: url("fonts/Consolas Italic.ttf");
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "Consolas";
-    src: url("fonts/Consolas Bold Italic.ttf");
-    font-style: italic;
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "Computer Modern";
-    src: url("fonts/cmunrm.otf");
-}
-
-@font-face {
-    font-family: "Computer Modern";
-    src: url("fonts/cmunti.otf");
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "Computer Modern Bold";
-    src: url("fonts/cmunbx.otf");
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "Computer Modern Bold";
-    src: url("fonts/cmunbi.otf");
-    font-style: italic;
-    font-weight: bold;
+@page {
+    size: A4 Protrait;
 }
 
 body {
@@ -78,8 +24,19 @@ h4 {
 }
 
 h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
-    font-family: "Computer Modern Bold";
+    font-family: "CMU Serif";
+    font-weight: bold;
     font-size: 1.2em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+h6:after {
+    float: right;
+    content: "■";
+    font-size: .7em;
 }
 
 i, em {
@@ -110,17 +67,61 @@ ul p, ol p, ul li, ol li {
 }
 
 pre, code {
-    font-family: Consolas;
+    font-family: Consolas, "Source Han Sans SC";
+    margin: 0;
+}
+
+pre {
+    border: 1px solid black;
+    padding: 0 .3em;
 }
 
 hr {
-    margin: 1em 0;
+    margin: .5em 0;
     border: 0;
     border-bottom: 3px dashed black;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: .3em;
+}
+
+th {
+    font-family: "Lato", "Source Han Sans SC";
+    border-bottom: 4px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+th:first-of-type {
+    border-left: none;
+}
+
+th:last-of-type {
+    border-right: none;
+}
+
+td:first-of-type {
+    border-right: 1px solid black;
+}
+
+.title {
+    display: inline-block;
+}
+
 .source-code h4 {
     font-weight: bold;
+}
+
+.source-code h4:after {
+    float: right;
+    content: "■";
+    line-height: 1.95em;
 }
 
 .code-block {
@@ -141,7 +142,7 @@ hr {
 }
 
 .number {
-    width: 1.8em;
+    width: 1m;
     text-align: right;
     margin-right: 0.5em;
     color: gray;

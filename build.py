@@ -161,7 +161,7 @@ def parse_cxx(path):
     DEBUG('Options: %s' % ' '.join(config.CLANG_ARGS))
     with open(path, 'r') as reader:
         evil = reader.read()
-        angle = evil.replace('\t', ' ' * config.TAGSIZE)
+        angle = evil.replace('\t', ' ' * config.TABSIZE)
 
     if evil != angle:
         DEBUG('Replacing tabs...')
@@ -363,7 +363,10 @@ def main():
     DEBUG('Writing into "%s"...' % args.output)
     with open(args.output, 'w') as writer:
         data = config.WEBPAGE_TEMPLATE.format(
-            document='%s%s%s' % ('\n'.join(toc), config.PAGE_SEPARATOR, '\n'.join(body))
+            document=config.CONTENT_TEMPLATE.format(
+                toc='\n'.join(toc),
+                separator=config.PAGE_SEPARATOR,
+                document='\n'.join(body))
         )
         writer.write(data.encode(config.ENCODING))
 

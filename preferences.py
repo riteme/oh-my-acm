@@ -58,7 +58,7 @@ META_DEFAULT_RANGE_START = 6
 FILE_EXTENSIONS = ['.cpp', '.c', '.cxx']
 DESCRIPTION_EXTENSIONS = ['.md', '.mkd', '.markdown']
 ENCODING = 'utf-8'
-TAGSIZE = 4
+TABSIZE = 2
 
 # Display Settings
 REPLACEMENT = {
@@ -73,13 +73,14 @@ BLOCK_BEGIN_MARCO = 'ACM_BEGIN'
 BLOCK_END_MARCO = 'ACM_END'
 
 # Document Settings
+CONTENT_TEMPLATE = u'{toc}{separator}{document}'
 TOC_CATEGORY_TEMPLATE = u'<h3>{category}</h3>'
 TOC_TITLE_TEMPLATE = u'<h4><b>{id}</b>　{title}</h4>'
-DOCUMENT_TEMPLATE = u'''<h4><b>{id}.</b> {title}</h4>
+DOCUMENT_TEMPLATE = u'''<div class="source-code"><h4><b>{id}.</b> {title}</h4>
 {description}
-{code}'''
-UNUSED_DOCUMENT_TEMPLATE = u'''∘ <code>{title}</code>:
-<div>{description}</div>
+{code}</div>'''
+UNUSED_DOCUMENT_TEMPLATE = u'''<div class="document">∘ <code>{title}</code>:
+<div>{description}</div></div>
 '''
 PAGE_SEPARATOR = u'<hr />'
 WEBPAGE_TEMPLATE = u'''<!DOCTYPE html><html><head>

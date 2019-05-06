@@ -59,11 +59,12 @@
 body {
     font-size: 35px;
     font-family: /*"Computer Modern", */"Source Han Serif SC";
+    column-count: 2;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-    font-family: "Segoe UI", "Source Han Sans SC";
+    font-family: "Lato", "Segoe UI", "Source Han Sans SC";
     margin: 0;
 }
 
@@ -82,7 +83,7 @@ h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
 }
 
 i, em {
-    font-family: "Segoe UI", "Source Han Serif SC";
+    font-family: "Lato", "Segoe UI", "Source Han Serif SC";
 }
 
 b, strong {
@@ -116,6 +117,10 @@ hr {
     margin: 1em 0;
     border: 0;
     border-bottom: 3px dashed black;
+}
+
+.source-code h4 {
+    font-weight: bold;
 }
 
 .code-block {

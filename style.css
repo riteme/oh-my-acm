@@ -142,7 +142,7 @@ td:first-of-type {
 }
 
 .number {
-    width: 1m;
+    width: 1.05em;
     text-align: right;
     margin-right: 0.5em;
     color: gray;

@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <math.h>
 using namespace std;
+
+#define ACM_BEGIN
 const int maxn = 120000;
 const double pi = acos(-1);
 struct complex {
@@ -32,9 +34,7 @@ void FFT ( complex *x , int f ) {
         x[i+j-1] = u + t;
         x[i+j-1+k] = u - t;
         w = w * wm;
-      }
-    }
-  }
+  }}}
   if ( f == -1 ) for ( i = 0 ; i < N ; i++ ) x[i].r = x[i].r / N;
 }
 void work () {
@@ -49,6 +49,7 @@ void work () {
   FFT ( c , -1 );
   for ( i = 0 ; i <= n + m ; i++ ) printf ( "%d%c" , int (c[i].r + 0.5) , i==n+m?'\n':' ' );
 }
+#define ACM_END
 int main () {
   work ();
   return 0;

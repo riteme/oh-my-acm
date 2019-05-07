@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <queue>
 using namespace std;
+#define ACM_BEGIN
 const int maxn = 510;
 struct node {
   int v;
@@ -53,19 +54,14 @@ void bfs ( int x ) {
           pre[j->v] = k;
           vis[j->v] = 1; vis[match[j->v]] = 1;
           q.push ( match[j->v] );
-        }
-      }
+      }}
       else {
         if ( find ( k ) == find ( j -> v ) ) continue;
         if ( kind[find(j->v)] == 1 ) {
           z = lca ( k , j -> v , x );
           blossom ( k , j -> v , z );
           blossom ( j -> v , k , z );
-        }
-      }
-    }
-  }
-}
+}}}}}
 void work () {
   int i , u , v;
   scanf ( "%d%d" , &n , &m );
@@ -80,6 +76,7 @@ void work () {
   printf ( "%d\n" , ans / 2 );
   for ( i = 1 ; i <= n ; i++ ) printf ( "%d%c" , match[i] , i==n?'\n':' ' );
 }
+#define ACM_END
 int main () {
   work ();
   return 0;

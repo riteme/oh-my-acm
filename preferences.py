@@ -46,18 +46,19 @@ MARKDOWN_EXTENSIONS = [
 ]
 
 # Metainfo Settings
-META_TITLE = 'title'
-META_CATEGORY = 'category'
-META_DESCRIPTION = 'description'
-META_DEFAULT_TITLE = 'No Title'
-META_DEFAULT_CATEGORY = 'UNCATEGORIZED'
-META_DOCUMENT_DEFAULT_CATEGORY = 'ADDITIONAL DOCUMENTS'
+META_TITLE = u'title'
+META_CATEGORY = u'category'
+META_DESCRIPTION = u'description'
+META_DEFAULT_TITLE = u'无标题'
+META_DEFAULT_CATEGORY = u'未分类'
+META_DOCUMENT_DEFAULT_CATEGORY = u'其它文档'
 META_DEFAULT_RANGE_START = 6
 
 # Source File Settings
 FILE_EXTENSIONS = ['.cpp', '.c', '.cxx']
 DESCRIPTION_EXTENSIONS = ['.md', '.mkd', '.markdown']
 ENCODING = 'utf-8'
+PATH_ENCODING = 'utf-8'
 TABSIZE = 2
 
 # Display Settings

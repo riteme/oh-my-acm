@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <algorithm>
 using namespace std;
+#define ACM_BEGIN
 const long long maxn = 120000;
 const long long mod = 998244353;
 const long long omega = 3;
@@ -30,9 +31,7 @@ void FFT ( long long *x , long long f ) {
         x[i+j-1] = (u + t) % mod;
         x[i+j-1+k] = (u - t + mod) % mod;
         w = (w*wm) % mod;
-      }
-    }
-  }
+  }}}
   if ( f == -1 ) for ( i = 0 ; i < N ; i++ ) x[i] = (x[i] * in) % mod;
 }
 void work () {
@@ -48,6 +47,7 @@ void work () {
   FFT ( c , -1 );
   for ( i = 0 ; i <= n + m ; i++ ) printf ( "%lld%c" , c[i] , i==n+m?'\n':' ' );
 }
+#define ACM_END
 int main () {
   work ();
   return 0;

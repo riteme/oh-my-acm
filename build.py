@@ -272,6 +272,7 @@ def add_line_numbers(s, slices):
 
 # Markdown Parser
 def parse_markdown(path):
+    DEBUG('Parsing markdown file: %s' % path)
     with open(path, 'r') as reader:
         return md.convert(reader.read().decode(config.ENCODING))
 
@@ -355,7 +356,7 @@ def main():
                 path = os.path.abspath(os.path.join(cwd, name))
                 if path not in used_documents:
                     body.append(config.UNUSED_DOCUMENT_TEMPLATE.format(
-                        title=os.path.relpath(path, start=basedir),
+                        title=os.path.relpath(path, start=basedir).decode(config.PATH_ENCODING),
                         description=parse_markdown(path)))
         os.chdir(curdir)
     os.path.walk(args.folder, search_for_documents, None)
@@ -370,7 +371,5 @@ def main():
         )
         writer.write(data.encode(config.ENCODING))
 
-if __name__ != "__main__":
-    ERROR('Not a python module.')
-else:
+if __name__ == "__main__":
     main()

@@ -114,8 +114,7 @@ void access ( long long x ) {
     update ( -p[x].fa );
     p[x].fa *= -1;
     splay ( x );
-  }
-}
+}}
 void makeroot ( long long x ) {
   access ( x );
   p[x].rev ^= 1;

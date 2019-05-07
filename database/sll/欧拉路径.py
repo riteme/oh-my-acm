@@ -3,12 +3,12 @@
  * category: 图论
  * description: /dev/null
  */
- 
+
 def work(u):
 	global e,top
 	i=head[u]
 	while i>0:
-#		print(str(i)+str(e[i].next))
+		#print(str(i)+str(e[i].next))
 		if e[i].c==0:
 			i=e[i].next
 			continue

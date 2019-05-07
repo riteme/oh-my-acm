@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <string.h>
 using namespace std;
+#define ACM_BEGIN
 const int NN = 310000;
 struct node {
   int len , cnt,ch[30] , fail;
@@ -44,6 +45,7 @@ void work () {
   }
   printf ( "%lld\n" , ans );
 }
+#define ACM_END
 int main () {
   work ();
   return 0;

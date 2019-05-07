@@ -10,6 +10,7 @@
 
 using namespace std;
 
+#define ACM_BEGIN
 const int maxn = 120000;
 struct point {
   double x , y;
@@ -62,15 +63,12 @@ void work () {
               tmp2 = getcen ( a[i] , a[j] , a[k] );
               tmp = dis ( tmp2 , a[i] );
               tmp1 = tmp2;
-            }
-          }
+          }}
           c = tmp1; r = tmp;
-        }
-      }
-    }
-  }
+  }}}}
   printf ( "%.3lf\n" , r );
 }
+#define ACM_END
 int main () {
   work ();
   return 0;

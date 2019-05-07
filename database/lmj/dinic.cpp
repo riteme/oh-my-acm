@@ -45,8 +45,7 @@ bool makelevel () {
         level[j->v] = level[k] + 1;
         q.push ( j -> v );
         if ( j -> v == 1 + n + n + 1 ) return true;
-      }
-  }
+  }}
   return false;
 }
 int find ( int k , int key ) {

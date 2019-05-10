@@ -26,7 +26,8 @@ SPECIAL = {
     'preprocessor': [
         'include', 'define', 'undef', 'pragma', 'if', 'else', 'elif', 'endif',
         'ifdef', 'ifndef'
-    ]
+    ],
+    'simple-variable': list('abcdefghpqrstuvwxyz')
 }
 
 # Makrdown Settings
@@ -74,13 +75,15 @@ BLOCK_BEGIN_MARCO = 'ACM_BEGIN'
 BLOCK_END_MARCO = 'ACM_END'
 
 # Document Settings
-CONTENT_TEMPLATE = u'{toc}{separator}{document}'
-TOC_CATEGORY_TEMPLATE = u'<h3>{category}</h3>'
+CONTENT_TEMPLATE = u'<div class="toc">{toc}</div>{separator}{document}'
+TOC_CATEGORY_TEMPLATE = u'<h3><div class="left">{category}</div><div class="right">□</div></h3>'
 TOC_TITLE_TEMPLATE = u'<h4 class="title"><b>{id}</b>. {title}</h4>'
-DOCUMENT_TEMPLATE = u'''<div class="source-code"><h4><b>{id}.</b> {title}</h4>
+DOCUMENT_TEMPLATE = u'''<div class="source-code">
+<h4><div class="left"><b>{id}.</b> {title}</div><div class="right">■</div></h4>
 {description}
 {code}</div>'''
-UNUSED_DOCUMENT_TEMPLATE = u'''<div class="document"><h6>∘ <code>{title}</code></h6>
+UNUSED_DOCUMENT_TEMPLATE = u'''<div class="document">
+<h6><div class="left">∘ <code>{title}</code></div><div class="right">■</div></h6>
 <div>{description}</div></div>
 '''
 PAGE_SEPARATOR = u'<hr />'

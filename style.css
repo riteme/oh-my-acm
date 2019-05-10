@@ -26,17 +26,11 @@ h4 {
 h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
     font-family: "CMU Serif";
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 h6 {
     font-size: 1em;
-}
-
-h6:after {
-    float: right;
-    content: "■";
-    font-size: .7em;
 }
 
 i, em {
@@ -118,15 +112,9 @@ td:first-of-type {
     font-weight: bold;
 }
 
-.source-code h4:after {
-    float: right;
-    content: "■";
-    line-height: 1.95em;
-}
-
 .code-block {
     border: 1px solid black;
-    padding: 0.2em;
+    padding: .2em 0 .2em .1em;
     margin: 0;
     line-height: 1em;
 }
@@ -149,15 +137,19 @@ td:first-of-type {
 }
 
 .code {
-    width: calc(100% - 2.3em);
+    width: calc(100% - 1.55em);;
     word-break: break-all;
+}
+
+.punct {
+    color: dimgray;
 }
 
 .keyword, .preprocessor {
     font-weight: bold;
 }
 
-.pod {
+.pod, .simple-variable {
     font-style: italic;
 }
 
@@ -176,6 +168,24 @@ td:first-of-type {
 
 .katex-display {
     margin: 0;
+}
+
+.toc h3, .source-code h4, .document h6 {
+    display: flex;
+}
+
+.right {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.toc .right {
+    font-family: CMU Serif;
+    font-size: 1.2em;
+}
+
+.document .right {
+    font-size: .8em;
 }
 
 @media print {

@@ -1,6 +1,6 @@
 /**
  * title: 单纯型
- * category: 最优化
+ * category: 杂项
  * description: /dev/null
  */
 // #define NDEBUG

@@ -393,5 +393,7 @@ def main():
         )
         writer.write(data.encode(config.ENCODING))
 
-if __name__ == "__main__":
+if __name__ != "__main__":
+    ERROR('Not a python module.')
+else:
     main()

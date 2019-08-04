@@ -7,6 +7,7 @@ import os
 import os.path
 import argparse
 import itertools
+zip = itertools.izip
 
 from sys import argv
 from colorama import Fore
@@ -230,6 +231,23 @@ def parse_cxx(path):
             key = key.strip('\* ')
             value = value.strip()
             meta[key] = value.decode(config.ENCODING)
+    else:
+        DEBUG('No metainfo block found at the start of source code. Try parsing file name.')
+        name = os.path.basename(os.path.splitext(path)[0])
+        vals = name.split(config.NAMEMETA_SEPARATER)
+        for key, val in zip(config.NAMEMETA_KEYS, vals):
+            meta[key] = val.strip().decode(config.ENCODING)
+        # Default to match title with description file
+        title = meta[config.NAMEMETA_TITLE_KEY]
+        for ext in config.DESCRIPTION_EXTENSIONS:
+            desc = title + ext
+            DEBUG('Try "%s"...' % desc)
+            if os.path.isfile(desc):
+                break
+            else:
+                desc = None
+        if desc is not None:
+            meta[config.NAMEMETA_DESCRIPTION_KEY] = desc
 
     DEBUG('Generating slices...')
     last = 0
@@ -315,6 +333,7 @@ def main():
     used_documents = set()
     curdir = os.getcwd()
     def search_for_sources(arg, dirname, fnames):
+        fnames[:] = [x for x in fnames if not x.startswith('.')]  # Skip hidden files & folders
         os.chdir(dirname)
         cwd = os.getcwd()
         for name in fnames:
@@ -325,7 +344,9 @@ def main():
                 result = resolve(name)
                 meta = result[-1]
                 if config.META_DESCRIPTION in meta:
-                    used_documents.add(os.path.abspath(os.path.join(cwd, meta[config.META_DESCRIPTION])))
+                    used_documents.add(
+                        os.path.abspath(os.path.join(cwd, meta[config.META_DESCRIPTION])).encode(config.ENCODING)
+                    )
                 database[result.category].append(result)
         os.chdir(curdir)
     os.path.walk(args.folder, search_for_sources, None)
@@ -346,6 +367,7 @@ def main():
     toc.append(config.TOC_CATEGORY_TEMPLATE.format(category=config.META_DOCUMENT_DEFAULT_CATEGORY))
     body.append(config.PAGE_SEPARATOR)
     def search_for_documents(arg, dirname, fnames):
+        fnames[:] = [x for x in fnames if not x.startswith('.')]  # Skip hidden files & folders
         os.chdir(dirname)
         cwd = os.getcwd()
         for name in fnames:

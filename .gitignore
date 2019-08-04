@@ -1,5 +1,7 @@
 test*
 *.html
+*.pdf
 *.pyc
 __pycache__/*
+database/*
 .vscode/*

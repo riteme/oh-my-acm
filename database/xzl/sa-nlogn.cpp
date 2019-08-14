@@ -17,6 +17,7 @@ using namespace std;
 static int sa[NMAX + 10], rk[NMAX + 10], lcp[NMAX + 10];
 void suffix_sort(const char *s, int n, int m) {
   static int x[NMAX + 10], y[NMAX + 10], cnt[NMAX + 10], i;
+  //memset(cnt, 0, sizeof(int) * (m + 1));
   for (i = 0; i < n; i++) cnt[s[i]]++;
   for (i = 1; i <= m; i++) cnt[i] += cnt[i - 1];
   for (i = 0; i < n; i++) sa[--cnt[s[i]]] = i;

@@ -27,7 +27,7 @@ SPECIAL = {
         'include', 'define', 'undef', 'pragma', 'if', 'else', 'elif', 'endif',
         'ifdef', 'ifndef'
     ],
-    'simple-variable': list('abcdefghpqrstuvwxyz')
+    'simple-variable': list('abcdefghlpqrstuvwxyz')
 }
 
 # Makrdown Settings

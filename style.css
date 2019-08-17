@@ -2,9 +2,15 @@
     size: A4 Protrait;
 }
 
+@font-face {
+    font-family: "replacement";
+    unicode-range: U+5f, U+3c, U+3e;
+    src: local("Consolas");
+}
+
 body {
     font-size: 35px;
-    font-family: /*"Computer Modern", */"Source Han Serif SC";
+    font-family: /*"Computer Modern",*/ KaTeX_Main, "Source Han Serif SC";
     column-count: 2;
 }
 
@@ -65,9 +71,16 @@ ul p, ol p, ul li, ol li {
 }
 
 pre, code {
-    font-family: Consolas, "Source Han Sans SC";
     word-break: break-all;
     margin: 0;
+}
+
+code {
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+}
+
+pre, pre code {
+    font-family: Consolas, "Source Han Sans SC";
 }
 
 pre {

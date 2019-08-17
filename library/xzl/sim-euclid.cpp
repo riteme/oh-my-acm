@@ -57,17 +57,21 @@ i64 F(i64 n, i64 a, i64 b, i64 c, int p, int q, int d = 0) {
   if (n < 0) return 0;
   if (has[d][p][q]) return val[d][p][q];
   has[d][p][q] = true;
-  i64 &ret = val[d++][p][q] = 0;  // 后面的 d 均加 1
-  if (!q) ret = S(n, p) + (!p);   // 注意 p = 0 的边界情况
-  else if (!a) ret = qpow(b / c, q) * (S(n, p) + (!p)) % MOD;
-  else if (a >= c) {
+  i64 &ret = val[d++][p][q] = 0; // 后面的 d 均加 1
+  if (!q) ret = S(n, p) + (!p); // 注意 p = 0 的边界情况
+  else if (!a) {
+    ret = qpow(b / c, q) * (S(n, p) + (!p)) % MOD;
+    //return b / c * (n + 1) % MOD;
+  } else if (a >= c) {
     i64 m = a / c, r = a % c, mp = 1;
     for (int j = 0; j <= q; j++, mp = mp * m % MOD)
       add(ret, C[q][j] * mp % MOD * F(n, r, b, c, p + j, q - j, d) % MOD);
+    //return (F(n, a % c, b, c) + a / c * n % MOD * (n + 1) % MOD * INV2) % MOD;
   } else if (b >= c) {
     i64 m = b / c, r = b % c, mp = 1;
     for (int j = 0; j <= q; j++, mp = mp * m % MOD)
       add(ret, C[q][j] * mp % MOD * F(n, a, r, c, p, q - j, d) % MOD);
+    //return (F(n, a, b % c, c) + b / c * (n + 1)) % MOD;
   } else {
     i64 m = (a * n + b) / c;
     for (int k = 0; k < q; k++) {
@@ -77,6 +81,7 @@ i64 F(i64 n, i64 a, i64 b, i64 c, int p, int q, int d = 0) {
       add(ret, C[q][k] * s % MOD);
     }
     ret = (qpow(m, q) * S(n, p) - ret) % MOD;
+    //return (m * n - F(m - 1, c, c - b - 1, a)) % MOD;
   } return ret;
 }
 #define ACM_END

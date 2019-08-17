@@ -1,0 +1,2 @@
+Pohlig-Hellman 离散对数算法，求解同余方程 $a^x \equiv b \pmod m$ 的最小解 $x$ 或者报告无解，要求 $m$ 为质数。`ord` 用于求出 $a$ 关于 $m$ 的阶数。算法需要实现快速幂 `qpow(a, k, m)`、快速乘 `qmul(a, b, m)`、素数判定 `isprime(n)` 和使用扩展 Euclid 算法求出的逆元 `inv(x, m)`。`p0`、`k0`、`c0` 存放的是 $m - 1$ 的质因数分解，`p1`、`k1`、`c1` 存放的是 $a$ 关于 $m$ 的阶数的质因数分解。`factor` 是 Pollard-$ρ$ 质因数分解算法。设阶数的质因数分解为 $p_1^{k_1}p_2^{k_2}\cdots p_n^{k_n}$，则时间复杂度为 $\mathrm O\left(\sum_{i = 1}^n k_i(\log m + \sqrt p_i)\right)$。
+

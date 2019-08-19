@@ -161,13 +161,8 @@ def parse_cxx(path):
     INFO('Parsing "%s"...' % path)
     DEBUG('Options: %s' % ' '.join(config.CLANG_ARGS))
     with open(path, 'r') as reader:
-        evil = reader.read()
-        angle = evil.replace('\t', ' ' * config.TABSIZE)
+        content = reader.read().split('\n')
 
-    if evil != angle:
-        DEBUG('Replacing tabs...')
-        with open(path, 'w') as writer:
-            writer.write(angle)
     tu = cl.parse(
         path, config.CLANG_ARGS,
         options=clang.cindex.TranslationUnit.PARSE_DETAILED_PROCESSING_RECORD
@@ -193,7 +188,9 @@ def parse_cxx(path):
             line = loc.line
             column = 1
         if loc.column != column:
-            buf.append(' ' * (loc.column - column))
+            tab_count = content[line - 1][column - 1 : loc.column - 1].count('\t')
+            length = loc.column - column
+            buf.append(' ' * ((length - tab_count) + tab_count * config.TABSIZE))
             column = loc.column
 
         tags = get_tag(token)
@@ -231,14 +228,15 @@ def parse_cxx(path):
             key = key.strip('\* ')
             value = value.strip()
             meta[key] = value.decode(config.ENCODING)
-    else:
-        DEBUG('No metainfo block found at the start of source code. Try parsing file name.')
-        name = os.path.basename(os.path.splitext(path)[0])
-        vals = name.split(config.NAMEMETA_SEPARATER)
-        for key, val in zip(config.NAMEMETA_KEYS, vals):
+    DEBUG('Parsing file name...')
+    name = os.path.basename(os.path.splitext(path)[0])
+    vals = name.split(config.NAMEMETA_SEPARATER)
+    for key, val in zip(config.NAMEMETA_KEYS, vals):
+        if key not in meta:
             meta[key] = val.strip().decode(config.ENCODING)
-        # Default to match title with description file
-        title = meta[config.NAMEMETA_TITLE_KEY]
+    # Default to match title with description file
+    if config.META_DESCRIPTION not in meta:
+        title = meta[config.META_TITLE]
         for ext in config.DESCRIPTION_EXTENSIONS:
             desc = title + ext
             DEBUG('Try "%s"...' % desc)
@@ -247,7 +245,7 @@ def parse_cxx(path):
             else:
                 desc = None
         if desc is not None:
-            meta[config.NAMEMETA_DESCRIPTION_KEY] = desc
+            meta[config.META_DESCRIPTION] = desc
 
     DEBUG('Generating slices...')
     last = 0
@@ -302,13 +300,15 @@ def resolve(path):
     for item in meta.items():
         DEBUG('"%s": "%s"' % item)
 
+    # Describing one document
     code = add_line_numbers(code, slices)
     desc = parse_markdown(meta[config.META_DESCRIPTION]) if config.META_DESCRIPTION in meta else ''
     title = meta[config.META_TITLE] if config.META_TITLE in meta else config.META_DEFAULT_TITLE
     category = meta[config.META_CATEGORY] if config.META_CATEGORY in meta else config.META_DEFAULT_CATEGORY
+    rank = int(meta[config.META_RANK]) if config.META_RANK in meta else config.META_DEFAULT_RANK
     return namedtuple(
-        'Item', ['desc', 'code', 'title', 'category', 'meta']
-    )(desc, code, title, category, meta)
+        'Item', ['desc', 'code', 'title', 'category', 'rank', 'meta']
+    )(desc, code, title, category, rank, meta)
 
 # Main
 def main():
@@ -358,7 +358,7 @@ def main():
     for category, docs in database.items():
         DEBUG('Processing category "%s"...' % category)
         toc.append(config.TOC_CATEGORY_TEMPLATE.format(category=category))
-        for doc in docs:
+        for doc in sorted(docs, key=lambda doc: (doc.rank, doc.title)):
             cnt += 1
             toc.append(config.TOC_TITLE_TEMPLATE.format(id=cnt, title=doc.title))
             body.append(config.DOCUMENT_TEMPLATE.format(id=cnt, title=doc.title, description=doc.desc, code=doc.code))

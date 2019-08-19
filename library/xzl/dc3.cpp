@@ -2,6 +2,7 @@
  * title: 后缀排序：DC3
  * category: 字符串
  * description: dc3.md
+ * rank: 1000
  */
 
 #include <cstdio>

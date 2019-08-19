@@ -2,6 +2,7 @@
  * title: 最小树形图：朴素算法
  * category: 图论
  * description: mdst-nm.md
+ * rank: 100
  */
 
 #include <cstdio>

@@ -1,3 +1,6 @@
+/**
+ * rank: 2000
+ */
 #include <ctime>
 #include <cstdio>
 #include <cctype>

@@ -2,6 +2,7 @@
  * title: 后缀排序：SA-IS
  * category: 字符串
  * description: sais.md
+ * rank: 1001
  */
 
 #include <cstdio>

@@ -2,6 +2,7 @@
  * title: 后缀排序：倍增算法
  * category: 字符串
  * description: sa-nlogn.md
+ * rank: 999
  */
 
 #include <cstdio>

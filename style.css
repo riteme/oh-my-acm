@@ -26,7 +26,6 @@ h3 {
 
 h4 {
     font-size: 1.1em;
-    text-indent: 0.5em;
 }
 
 h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
@@ -56,6 +55,7 @@ p, li {
 
 a {
     color: black;
+    text-decoration: none;
 }
 
 ul, ol {
@@ -116,10 +116,46 @@ th:first-of-type, td:first-of-type {
 
 .title {
     display: inline-block;
+    padding-left: .5em;
 }
 
 .source-code h4 {
     font-weight: bold;
+}
+
+.source-code .left {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.source-code .left b {
+    padding-right: .5em;
+    display: inline-block;
+}
+
+.source-code .right {
+    flex-grow: initial;
+    font-size: 1.15em;
+}
+
+.source-code .document-title, .source-code .document-path {
+    display: inline-block;
+}
+
+.source-code .document-path {
+    font-weight: normal;
+    font-size: .8em;
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+}
+
+.source-code .document-path .path {
+    display: inline-block;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 12em;
 }
 
 .code-block {
@@ -200,7 +236,7 @@ th:first-of-type, td:first-of-type {
 }
 
 .document .right {
-    font-size: .8em;
+    font-size: .9em;
 }
 
 @media print {

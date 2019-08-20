@@ -77,15 +77,20 @@ REPLACEMENT = {
 
 # Generator Settings
 DISABLE_DEBUG = True
+CACHE_DIRECTORY = '.cache'
+DISABLE_CACHE = False
 BLOCK_BEGIN_MARCO = 'ACM_BEGIN'
 BLOCK_END_MARCO = 'ACM_END'
 
 # Document Settings
 CONTENT_TEMPLATE = u'<div class="toc">{toc}</div>{separator}{document}'
-TOC_CATEGORY_TEMPLATE = u'<h3><div class="left">{category}</div><div class="right">□</div></h3>'
-TOC_TITLE_TEMPLATE = u'<h4 class="title"><b>{id}</b>. {title}</h4>'
+TOC_CATEGORY_TEMPLATE = u'<h3 id="{category_md5}"><div class="left">{category}</div><div class="right">□</div></h3>'
+TOC_TITLE_TEMPLATE = u'<h4 class="title"><b><a href="#{id}">{id}</a></b>. {title}</h4>'
 DOCUMENT_TEMPLATE = u'''<div class="source-code">
-<h4><div class="left"><b>{id}.</b> {title}</div><div class="right">■</div></h4>
+<h4 id="{id}"><div class="left">
+<b><a href="#{category_md5}">{id}</a>.</b><div class="document-title">{title}</div>
+<div class="document-path">[{path}]</div></div>
+<div class="right">■</div></h4>
 {description}
 {code}</div>'''
 UNUSED_DOCUMENT_TEMPLATE = u'''<div class="document">

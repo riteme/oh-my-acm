@@ -1,7 +1,5 @@
 /**
  * title: 三分_上凸函数
- * category: 杂项
- * description: /dev/null
  */
 double solve() {
   while(l+eps<r) {

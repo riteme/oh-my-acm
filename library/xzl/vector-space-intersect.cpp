@@ -1,6 +1,5 @@
 /**
  * title: 线性空间求交
- * category: 杂项
  * description: vector-space-intersect.md
  */
 
@@ -64,8 +63,7 @@ auto intersect(Basis &u, Basis v) -> Basis {
         break;
     }}
     if (!x) z.add(y);
-  }
-  return z;
+  } return z;
 }
 #define ACM_END
 

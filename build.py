@@ -7,11 +7,22 @@ import os
 import os.path
 import argparse
 import itertools
+import hashlib
 zip = itertools.izip
+
+try:
+    import cPickle as pickle
+except:
+    import pickle
 
 from sys import argv
 from colorama import Fore
 from collections import defaultdict, namedtuple
+
+def md5(x):
+    if type(x) is unicode:
+        x = x.encode('utf-8')
+    return hashlib.md5(x).hexdigest()
 
 def INFO(message):
     print '%s(info)%s %s' % (Fore.GREEN, Fore.RESET, message)
@@ -22,6 +33,14 @@ def ERROR(message):
 def DEBUG(message):
     if not config.DISABLE_DEBUG:
         print '%s(debug)%s %s' % (Fore.BLUE, Fore.RESET, message)
+
+# Cache Management
+def load_cache(content):
+    key = md5(content)
+    if not os.path.exists(config.CACHE_DIRECTORY):
+        os.makedirs(config.CACHE_DIRECTORY)
+    path = os.path.join(config.CACHE_DIRECTORY, key)
+    return (path, False if config.DISABLE_CACHE else os.path.exists(path))
 
 # Python Markdown
 import markdown, re
@@ -161,7 +180,14 @@ def parse_cxx(path):
     INFO('Parsing "%s"...' % path)
     DEBUG('Options: %s' % ' '.join(config.CLANG_ARGS))
     with open(path, 'r') as reader:
-        content = reader.read().split('\n')
+        content = reader.read()
+        lines = content.split('\n')
+
+    cache, flag = load_cache(content)
+    if flag:
+        DEBUG('"%s" cached.' % path)
+        with open(cache, 'r') as reader:
+            return pickle.load(reader)
 
     tu = cl.parse(
         path, config.CLANG_ARGS,
@@ -188,7 +214,7 @@ def parse_cxx(path):
             line = loc.line
             column = 1
         if loc.column != column:
-            tab_count = content[line - 1][column - 1 : loc.column - 1].count('\t')
+            tab_count = lines[line - 1][column - 1 : loc.column - 1].count('\t')
             length = loc.column - column
             buf.append(' ' * ((length - tab_count) + tab_count * config.TABSIZE))
             column = loc.column
@@ -271,7 +297,10 @@ def parse_cxx(path):
         DEBUG('No specific range. Default is the entire file.')
         slices = [(config.META_DEFAULT_RANGE_START, line + 1)]
 
-    return (''.join(buf), meta, slices)
+    result = (''.join(buf), meta, slices)
+    with open(cache, 'w') as writer:
+        pickle.dump(result, writer)
+    return result
 
 def add_line_numbers(s, slices):
     data = ['<div class="%s"><div class="%s">%%s</div><div class="%s">%s</div></div>' %
@@ -290,10 +319,19 @@ def add_line_numbers(s, slices):
 def parse_markdown(path):
     DEBUG('Parsing markdown file: %s' % path)
     with open(path, 'r') as reader:
-        return md.convert(reader.read().decode(config.ENCODING))
+        content = reader.read()
+    cache, flag = load_cache(content)
+    if flag:
+        DEBUG('"%s" cached.' % path)
+        with open(cache, 'r') as reader:
+            return pickle.load(reader)
+    result = md.convert(content.decode(config.ENCODING))
+    with open(cache, 'w') as writer:
+        pickle.dump(result, writer)
+    return result
 
 # Resolver
-def resolve(path):
+def resolve(path, relpath):
     code, meta, slices = parse_cxx(path)
 
     DEBUG('Metainfo:')
@@ -307,17 +345,20 @@ def resolve(path):
     category = meta[config.META_CATEGORY] if config.META_CATEGORY in meta else config.META_DEFAULT_CATEGORY
     rank = int(meta[config.META_RANK]) if config.META_RANK in meta else config.META_DEFAULT_RANK
     return namedtuple(
-        'Item', ['desc', 'code', 'title', 'category', 'rank', 'meta']
-    )(desc, code, title, category, rank, meta)
+        'Item', ['desc', 'code', 'title', 'category', 'rank', 'path', 'meta']
+    )(desc, code, title, category, rank, relpath, meta)
 
 # Main
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('folder')
     parser.add_argument('-o', '--output', required=True)
+    parser.add_argument('-n', '--no-cache', action='store_true')
     parser.add_argument('-v', '--verbose', action='store_true')
     parser.add_argument('-q', '--quiet', action='store_true')
     args = parser.parse_args()
+    if args.no_cache:
+        config.DISABLE_CACHE = True
     if args.verbose:
         config.DISABLE_DEBUG = False
     if args.quiet:
@@ -332,6 +373,7 @@ def main():
     database = defaultdict(list)
     used_documents = set()
     curdir = os.getcwd()
+    basedir = os.path.join(curdir, args.folder)
     def search_for_sources(arg, dirname, fnames):
         fnames[:] = [x for x in fnames if not x.startswith('.')]  # Skip hidden files & folders
         os.chdir(dirname)
@@ -341,8 +383,9 @@ def main():
                 continue
             base, ext = os.path.splitext(name)
             if ext in config.FILE_EXTENSIONS:
-                result = resolve(name)
-                meta = result[-1]
+                path = os.path.abspath(os.path.join(cwd, name))
+                result = resolve(name, os.path.relpath(path, start=basedir).decode(config.PATH_ENCODING))
+                meta = result.meta
                 if config.META_DESCRIPTION in meta:
                     used_documents.add(
                         os.path.abspath(os.path.join(cwd, meta[config.META_DESCRIPTION])).encode(config.ENCODING)
@@ -357,14 +400,17 @@ def main():
     body = []
     for category, docs in database.items():
         DEBUG('Processing category "%s"...' % category)
-        toc.append(config.TOC_CATEGORY_TEMPLATE.format(category=category))
+        toc.append(config.TOC_CATEGORY_TEMPLATE.format(category=category, category_md5=md5(category)))
         for doc in sorted(docs, key=lambda doc: (doc.rank, doc.title)):
             cnt += 1
             toc.append(config.TOC_TITLE_TEMPLATE.format(id=cnt, title=doc.title))
-            body.append(config.DOCUMENT_TEMPLATE.format(id=cnt, title=doc.title, description=doc.desc, code=doc.code))
+            body.append(config.DOCUMENT_TEMPLATE.format(
+                id=cnt, title=doc.title, category=doc.category, category_md5=md5(doc.category),
+                path=doc.path, description=doc.desc, code=doc.code))
 
-    basedir = os.path.join(curdir, args.folder)
-    toc.append(config.TOC_CATEGORY_TEMPLATE.format(category=config.META_DOCUMENT_DEFAULT_CATEGORY))
+    toc.append(config.TOC_CATEGORY_TEMPLATE.format(
+        category=config.META_DOCUMENT_DEFAULT_CATEGORY,
+        category_md5=md5(config.META_DOCUMENT_DEFAULT_CATEGORY)))
     body.append(config.PAGE_SEPARATOR)
     def search_for_documents(arg, dirname, fnames):
         fnames[:] = [x for x in fnames if not x.startswith('.')]  # Skip hidden files & folders

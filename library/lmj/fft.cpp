@@ -1,6 +1,6 @@
 /**
  * title: fft
- * category: 数据结构
+ * category: 多项式
  * description: /dev/null
  */
 #include <stdio.h>

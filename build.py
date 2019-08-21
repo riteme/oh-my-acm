@@ -209,9 +209,11 @@ def parse_cxx(path):
     buf = []
     for token in tu.get_tokens(extent=tu.cursor.extent):
         loc = token.location
-        if loc.line != line:
-            buf.append('\n' * (loc.line - line))
-            line = loc.line
+        while loc.line != line:
+            # Sometimes clang will ignore line breaks "\" at the end of each line
+            # trailing spaces trimmed
+            buf.append(lines[line - 1][column - 1:].rstrip() + '\n')
+            line += 1
             column = 1
         if loc.column != column:
             tab_count = lines[line - 1][column - 1 : loc.column - 1].count('\t')
@@ -220,6 +222,7 @@ def parse_cxx(path):
             column = loc.column
 
         tags = get_tag(token)
+        #DEBUG(tags)
         classes = []
         if token.kind == clang.cindex.TokenKind.KEYWORD:
             classes.append(config.KEYWORD_CLASS)
@@ -243,11 +246,16 @@ def parse_cxx(path):
 
         line = token.extent.end.line
         column = token.extent.end.column
+    # Includes tailing contents
+    if column != len(lines[line - 1]):
+        buf.append(lines[line - 1][column - 1:].rstrip())
 
     DEBUG('Parsing metainfo...')
     data = list(itertools.islice(tu.get_tokens(extent=tu.cursor.extent), 1))[0]
     meta = {}
+    meta_end = 1
     if data.kind == clang.cindex.TokenKind.COMMENT and data.spelling.startswith('/**'):
+        meta_end = data.extent.end.line + 1
         data = data.spelling.split('\n')[1:-1]
         for row in data:
             key, value = row.split(':', 1)
@@ -295,7 +303,7 @@ def parse_cxx(path):
         slices.append((last, line + 1))
     if len(slices) == 0:
         DEBUG('No specific range. Default is the entire file.')
-        slices = [(config.META_DEFAULT_RANGE_START, line + 1)]
+        slices = [(meta_end, line + 1)]
 
     result = (''.join(buf), meta, slices)
     with open(cache, 'w') as writer:

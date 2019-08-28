@@ -1,0 +1,264 @@
+@page {
+    size: A4 Protrait;
+}
+
+@font-face {
+    font-family: "replacement";
+    unicode-range: U+5f, U+3c, U+3e;
+    src: local("Consolas");
+}
+
+body {
+    font-size: 35px;
+    font-family: /*"Computer Modern",*/ KaTeX_Main, "Source Han Serif SC";
+    column-count: 2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-family: "Lato", "Segoe UI", "Source Han Sans SC";
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
+    font-family: "CMU Serif";
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+i, em {
+    font-family: "Lato", "Segoe UI", "Source Han Serif SC";
+}
+
+b, strong {
+    font-weight: normal;
+    font-family: "Segoe UI", "Source Han Sans SC";
+}
+
+p, li {
+    text-indent: 2em;
+    text-align: justify;
+    margin: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul, ol {
+    margin: 0.05em 1em;
+}
+
+ul ul, ol ol {
+    margin: 0.05em 0;
+}
+
+ul p, ol p, ul li, ol li {
+    text-indent: 0;
+}
+
+pre, code {
+    word-break: break-all;
+    margin: 0;
+}
+
+code {
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+}
+
+pre, pre code {
+    font-family: Consolas, "Source Han Sans SC";
+}
+
+pre {
+    border: 1px solid black;
+    padding: 0 .3em;
+}
+
+hr {
+    margin: .5em 0;
+    border: 0;
+    border-bottom: 3px dashed black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: .1em 0;
+}
+
+th, td {
+    padding: .3em;
+}
+
+th {
+    font-family: "Lato", "Source Han Sans SC";
+    border-bottom: 4px solid black;
+}
+
+th:first-of-type, td:first-of-type {
+    border-right: 1px solid black;
+}
+
+.title {
+    display: inline-block;
+    padding-left: .5em;
+}
+
+.source-code h4 {
+    font-weight: bold;
+}
+
+.source-code .left {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.source-code .left b {
+    padding-right: .5em;
+    display: inline-block;
+}
+
+.source-code .right {
+    flex-grow: initial;
+    font-size: 1.15em;
+}
+
+.source-code .document-title, .source-code .document-path {
+    display: inline-block;
+}
+
+.source-code .document-path {
+    font-weight: normal;
+    font-size: .8em;
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+}
+
+.source-code .document-path .path {
+    display: inline-block;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 12em;
+}
+
+.code-block {
+    border: 1px solid black;
+    padding: .2em 0 .2em .1em;
+    margin: 0;
+    line-height: 1em;
+}
+
+.line {
+    display: flex;
+}
+
+.number, .code {
+    display: inline-block;
+    font-family: Consolas, "Source Han Sans SC";
+    white-space: pre-wrap;
+}
+
+.number {
+    width: 1.05em;
+    text-align: right;
+    margin-right: 0.5em;
+    color: gray;
+}
+
+.code {
+    width: calc(100% - 1.55em);;
+    word-break: break-all;
+}
+
+.punct {
+    color: dimgray;
+}
+
+.keyword, .preprocessor {
+    font-weight: bold;
+}
+
+.pod, .simple-variable {
+    font-style: italic;
+}
+
+.non-ascii {
+    font-size: 0.9em;
+    line-height: 0;
+}
+
+.comment {
+    color: grey;
+}
+
+.katex {
+    font-size: 1em;
+}
+
+.katex-display {
+    margin: 0;
+}
+
+.katex .cjk_fallback, .katex-display .cjk_fallback {
+    font-family: "Source Han Serif SC";
+    font-size: .9em;
+}
+
+.toc h3, .source-code h4, .document h6 {
+    display: flex;
+}
+
+.right {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.toc .right {
+    font-family: CMU Serif;
+    font-size: 1.2em;
+}
+
+.document .right {
+    font-size: .9em;
+}
+
+@media print {
+    .page-spliter {
+        page-break-after: always;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        position: relative;
+        page-break-after: avoid;
+    }
+
+    .katex .mtable .vertical-separator {
+        min-width: 1px;
+    }
+
+    .katex .mfrac .frac-line,
+    .katex .overline .overline-line,
+    .katex .underline .underline-line,
+    .katex .hline,
+    .katex .hdashline,
+    .katex .rule {
+        min-height: 1px;
+    }
+}

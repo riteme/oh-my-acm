@@ -2,9 +2,15 @@
     size: A4 Protrait;
 }
 
+@font-face {
+    font-family: "replacement";
+    unicode-range: U+5f, U+3c, U+3e;
+    src: local("Consolas");
+}
+
 body {
     font-size: 35px;
-    font-family: /*"Computer Modern", */"Source Han Serif SC";
+    font-family: /*"Computer Modern",*/ KaTeX_Main, "Source Han Serif SC";
     column-count: 2;
 }
 
@@ -20,7 +26,6 @@ h3 {
 
 h4 {
     font-size: 1.1em;
-    text-indent: 0.5em;
 }
 
 h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
@@ -50,10 +55,15 @@ p, li {
 
 a {
     color: black;
+    text-decoration: none;
 }
 
 ul, ol {
-    margin: 0.05em 2.3em;
+    margin: 0.05em 1em;
+}
+
+ul ul, ol ol {
+    margin: 0.05em 0;
 }
 
 ul p, ol p, ul li, ol li {
@@ -61,8 +71,16 @@ ul p, ol p, ul li, ol li {
 }
 
 pre, code {
-    font-family: Consolas, "Source Han Sans SC";
+    word-break: break-all;
     margin: 0;
+}
+
+code {
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+}
+
+pre, pre code {
+    font-family: Consolas, "Source Han Sans SC";
 }
 
 pre {
@@ -79,6 +97,8 @@ hr {
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+    margin: .1em 0;
 }
 
 th, td {
@@ -88,28 +108,54 @@ th, td {
 th {
     font-family: "Lato", "Source Han Sans SC";
     border-bottom: 4px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
 }
 
-th:first-of-type {
-    border-left: none;
-}
-
-th:last-of-type {
-    border-right: none;
-}
-
-td:first-of-type {
+th:first-of-type, td:first-of-type {
     border-right: 1px solid black;
 }
 
 .title {
     display: inline-block;
+    padding-left: .5em;
 }
 
 .source-code h4 {
     font-weight: bold;
+}
+
+.source-code .left {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.source-code .left b {
+    padding-right: .5em;
+    display: inline-block;
+}
+
+.source-code .right {
+    flex-grow: initial;
+    font-size: 1.15em;
+}
+
+.source-code .document-title, .source-code .document-path {
+    display: inline-block;
+}
+
+.source-code .document-path {
+    font-weight: normal;
+    font-size: .8em;
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+}
+
+.source-code .document-path .path {
+    display: inline-block;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 12em;
 }
 
 .code-block {
@@ -170,6 +216,11 @@ td:first-of-type {
     margin: 0;
 }
 
+.katex .cjk_fallback, .katex-display .cjk_fallback {
+    font-family: "Source Han Serif SC";
+    font-size: .9em;
+}
+
 .toc h3, .source-code h4, .document h6 {
     display: flex;
 }
@@ -185,7 +236,7 @@ td:first-of-type {
 }
 
 .document .right {
-    font-size: .8em;
+    font-size: .9em;
 }
 
 @media print {

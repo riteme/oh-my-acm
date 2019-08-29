@@ -3,7 +3,7 @@
 # Project Setting
 DOCUMENT_TITLE = "Encyclopedia? of Algorithms"
 OUTPUT_PATH = 'output.html'
-IGNORES = ['test.*', 'tmp/.*']
+IGNORES = ['test*', 'tmp/*', 'README.md', 'readme.md']
 
 # Clang Settings
 LIBCLANG_PATH = '/usr/lib/llvm-6.0/lib/libclang.so.1'

@@ -3,4 +3,4 @@ test*
 *.pyc
 __pycache__/*
 .vscode/*
-.cache/
+.cache/*

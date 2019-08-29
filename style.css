@@ -1,69 +1,22 @@
-@font-face {
-    font-family: "Source Han Sans SC";
-    src: url("fonts/Source-Han-Sans.otf");
+@page {
+    size: A4 Protrait;
 }
 
 @font-face {
-    font-family: "Source Han Serif SC";
-    src: url("fonts/Source-Han-Serif.otf");
-}
-
-@font-face {
-    font-family: "Consolas";
-    src: url("fonts/Consolas.ttf");
-}
-
-@font-face {
-    font-family: "Consolas";
-    src: url("fonts/Consolas Bold.ttf");
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "Consolas";
-    src: url("fonts/Consolas Italic.ttf");
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "Consolas";
-    src: url("fonts/Consolas Bold Italic.ttf");
-    font-style: italic;
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "Computer Modern";
-    src: url("fonts/cmunrm.otf");
-}
-
-@font-face {
-    font-family: "Computer Modern";
-    src: url("fonts/cmunti.otf");
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "Computer Modern Bold";
-    src: url("fonts/cmunbx.otf");
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "Computer Modern Bold";
-    src: url("fonts/cmunbi.otf");
-    font-style: italic;
-    font-weight: bold;
+    font-family: "replacement";
+    unicode-range: U+5f, U+3c, U+3e;
+    src: local("Consolas");
 }
 
 body {
     font-size: 35px;
-    font-family: /*"Computer Modern", */"Source Han Serif SC";
+    font-family: /*"Computer Modern",*/ KaTeX_Main, "Source Han Serif SC";
+    column-count: 2;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-    font-family: "Segoe UI", "Source Han Sans SC";
+    font-family: "Lato", "Segoe UI", "Source Han Sans SC";
     margin: 0;
 }
 
@@ -73,16 +26,20 @@ h3 {
 
 h4 {
     font-size: 1.1em;
-    text-indent: 0.5em;
 }
 
 h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
-    font-family: "Computer Modern Bold";
-    font-size: 1.2em;
+    font-family: "CMU Serif";
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+h6 {
+    font-size: 1em;
 }
 
 i, em {
-    font-family: "Segoe UI", "Source Han Serif SC";
+    font-family: "Lato", "Segoe UI", "Source Han Serif SC";
 }
 
 b, strong {
@@ -98,10 +55,15 @@ p, li {
 
 a {
     color: black;
+    text-decoration: none;
 }
 
 ul, ol {
-    margin: 0.05em 2.3em;
+    margin: 0.05em 1em;
+}
+
+ul ul, ol ol {
+    margin: 0.05em 0;
 }
 
 ul p, ol p, ul li, ol li {
@@ -109,19 +71,97 @@ ul p, ol p, ul li, ol li {
 }
 
 pre, code {
-    font-family: Consolas;
+    word-break: break-all;
+    margin: 0;
+}
+
+code {
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+}
+
+pre, pre code {
+    font-family: Consolas, "Source Han Sans SC";
+}
+
+pre {
+    border: 1px solid black;
+    padding: 0 .3em;
 }
 
 hr {
-    margin: 1em 0;
+    margin: .5em 0;
     border: 0;
     border-bottom: 3px dashed black;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: .1em 0;
+}
+
+th, td {
+    padding: .3em;
+}
+
+th {
+    font-family: "Lato", "Source Han Sans SC";
+    border-bottom: 4px solid black;
+}
+
+th:first-of-type, td:first-of-type {
+    border-right: 1px solid black;
+}
+
+.title {
+    display: inline-block;
+    padding-left: .5em;
+}
+
+.source-code h4 {
+    font-weight: bold;
+}
+
+.source-code .left {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.source-code .left b {
+    padding-right: .5em;
+    display: inline-block;
+}
+
+.source-code .right {
+    flex-grow: initial;
+    font-size: 1.15em;
+}
+
+.source-code .document-title, .source-code .document-path {
+    display: inline-block;
+}
+
+.source-code .document-path {
+    font-weight: normal;
+    font-size: .8em;
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+}
+
+.source-code .document-path .path {
+    display: inline-block;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 12em;
+}
+
 .code-block {
     border: 1px solid black;
-    padding: 0.2em;
-    margin: 0 0.5em;
+    padding: .2em 0 .2em .1em;
+    margin: 0;
     line-height: 1em;
 }
 
@@ -136,22 +176,26 @@ hr {
 }
 
 .number {
-    width: 1.8em;
+    width: 1.05em;
     text-align: right;
     margin-right: 0.5em;
     color: gray;
 }
 
 .code {
-    width: calc(100% - 2.3em);
+    width: calc(100% - 1.55em);;
     word-break: break-all;
+}
+
+.punct {
+    color: dimgray;
 }
 
 .keyword, .preprocessor {
     font-weight: bold;
 }
 
-.pod {
+.pod, .simple-variable {
     font-style: italic;
 }
 
@@ -170,6 +214,29 @@ hr {
 
 .katex-display {
     margin: 0;
+}
+
+.katex .cjk_fallback, .katex-display .cjk_fallback {
+    font-family: "Source Han Serif SC";
+    font-size: .9em;
+}
+
+.toc h3, .source-code h4, .document h6 {
+    display: flex;
+}
+
+.right {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.toc .right {
+    font-family: CMU Serif;
+    font-size: 1.2em;
+}
+
+.document .right {
+    font-size: .9em;
 }
 
 @media print {

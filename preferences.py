@@ -104,6 +104,7 @@ UNUSED_DOCUMENT_TEMPLATE = u'''<div class="document">
 '''
 PAGE_SEPARATOR = u'<hr />'
 WEBPAGE_TEMPLATE = u'''<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
   <link href=".katex/katex.min.css" type="text/css" rel="stylesheet">
   <script src=".katex/katex.min.js" type="text/javascript"></script>
   <script src=".katex/contrib/auto-render.min.js" type="text/javascript"></script>

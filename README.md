@@ -36,19 +36,9 @@ Fudan U2
 
 ## 文档生成
 
-**生成器依赖：**
+使用 `docmeld` 的 GitHub Webhook：<https://riteme.site/docmeld-webhook/>
 
-* Python 2.7.15rc1
-    * [Python Markdown](https://pypi.org/project/Markdown/) (PyPI)
-    * [colorama](https://pypi.org/project/colorama/) (PyPI)
-    * [python-clang-6.0](https://packages.ubuntu.com/bionic/python-clang-6.0) (bionic)
-* [clang-6.0](https://packages.ubuntu.com/bionic/clang-6.0) (bionic)
-
-**生成命令：**
-
-```
-docmeld library
-```
+文档网址：<https://riteme.site/docmeld/riteme/oh-my-acm/fall19/>
 
 **使用 Chrome 75 渲染 PDF：**
 

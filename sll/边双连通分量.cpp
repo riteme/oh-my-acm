@@ -10,8 +10,8 @@ void tarjan(int x, int f) {
         if (!dfn[e[i].to]) {
             tarjan(e[i].to, i);
             low[x] = min(low[x], low[e[i].to]);
-        }
-        else if (vis[e[i].to]) low[x] = min(low[x], dfn[e[i].to]);
+        } else if (vis[e[i].to])
+            low[x] = min(low[x], dfn[e[i].to]);
     }
     if (dfn[x] == low[x]) {
         scc++;
@@ -20,6 +20,4 @@ void tarjan(int x, int f) {
             vis[pos] = false;
             belong[pos] = scc;
             if (pos == x) break;
-        }
-    }
-}
+}}}

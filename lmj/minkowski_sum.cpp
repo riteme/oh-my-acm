@@ -8,6 +8,7 @@
 
 using namespace std;
 
+#define ACM_BEGIN
 typedef long long LL;
 struct node {
 	LL x , y;
@@ -80,6 +81,7 @@ void work () {
 	}//calculating 2*area
 	printf ( "%lld\n" , ans );
 }
+#define ACM_END
 int main () {
 	work ();
 	return 0;

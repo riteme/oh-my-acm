@@ -8,6 +8,7 @@
 
 using namespace std;
 
+#define ACM_BEGIN
 const int maxn = 51000;
 struct line {
 	int x1 , y1 , x2 , y2;
@@ -119,6 +120,7 @@ void work () {
 		}
 	}
 }
+#define ACM_END
 int main () {
 	work ();
 	return 0;

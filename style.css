@@ -114,6 +114,11 @@ th:first-of-type, td:first-of-type {
     border-right: 1px solid black;
 }
 
+img  {
+    width: 100%;
+    margin-left: -2em;
+}
+
 .title {
     display: inline-block;
     padding-left: .5em;

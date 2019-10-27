@@ -9,6 +9,7 @@
 
 using namespace std;
 
+#define ACM_BEGIN
 const int maxn = 120000;
 struct tree {
 	int l , r , lazy;
@@ -216,6 +217,7 @@ void work () {
 		else printf ( "%d %d\n" , p[l].l , p[l].r );
 	}
 }
+#define ACM_END
 int main () {
 	work ();
 	return 0;

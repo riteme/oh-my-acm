@@ -9,6 +9,7 @@
 
 using namespace std;
 
+#define ACM_BEGIN
 const int maxn = 1200;
 struct node {
 	int v;
@@ -162,6 +163,7 @@ void work () {
 		}
 	}
 }
+#define ACM_END
 int main () {
 	work ();
 	return 0;

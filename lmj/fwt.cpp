@@ -8,6 +8,7 @@
 
 using namespace std;
 
+#define ACM_BEGIN
 long long m;
 long long lim[5][5];
 long long a[5][5000];
@@ -35,11 +36,7 @@ void FWT ( long long *x , long long f ) {
                 if ( f == -1 ) {
                     x[i+j-1] = (x[i+j-1]/2);
                     x[i+j-1+k] = (x[i+j-1+k]/2);
-                }
-            }
-        }
-    }
-}
+}}}}}
 long long chk ( long long x , long long lim ) {
 	if ( 0 <= x && x <= lim ) return 1;
 	return 0;
@@ -81,6 +78,7 @@ void work () {
 	}
 	printf ( "%llu\n" , ans );
 }
+#define ACM_END
 int main () {
 	int t;
 	scanf ( "%d" , &t );

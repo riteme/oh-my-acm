@@ -20,6 +20,7 @@ int getint()
     return i*f;
 }
 
+#define ACM_BEGIN
 const int N=105;
 struct point
 {
@@ -83,3 +84,4 @@ int main()
     }
     return 0;
 }
+#define ACM_END

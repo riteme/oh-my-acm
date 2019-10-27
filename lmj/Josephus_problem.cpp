@@ -8,6 +8,7 @@
 
 using namespace std;
 
+#define ACM_BEGIN
 long long n , m , k;
 void work () {
 	long long i , x , t;
@@ -47,6 +48,7 @@ void work () {
 		printf ( "%lld\n" , x );
 	}
 }
+#define ACM_END
 int main () {
 	int t;
 	scanf ( "%d" , &t );

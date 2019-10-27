@@ -10,6 +10,7 @@ typedef long long LL;
 
 using namespace std;
 
+#define ACM_BEGIN
 LL n , mod;
 LL dp[5][5100];
 LL f[5100];
@@ -33,6 +34,7 @@ void work () {
 		printf ( "%lld\n" , f[i] );
 	}
 }
+#define ACM_END
 int main () {
 	work ();
 	return 0;

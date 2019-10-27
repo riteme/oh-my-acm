@@ -2,5 +2,7 @@
 
 考虑根节点是析点还是合点，然后枚举子树个数，要求子树叶子和是 $n$。
 
-####$$f(n)=\sum\limits _{k\geq 2} \prod\limits_{\sum_{i=1}^ka_i=n}f(a_i)+\sum\limits _{k\geq 4} \prod\limits_{\sum_{i=1}^ka_i=n}f(a_i) $$
+$$
+f(n)=\sum\limits _{k\geq 2} \prod\limits_{\sum_{i=1}^ka_i=n}f(a_i)+\sum\limits _{k\geq 4} \prod\limits_{\sum_{i=1}^ka_i=n}f(a_i)
+$$
 

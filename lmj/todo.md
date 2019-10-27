@@ -1,36 +1,36 @@
-Ë¹Ì¹ÄÉÊ÷
-Á¬·ÖÊýÕ¹¿ª£¬ÔÚa/bµ½c/dÖ®¼ä·ÖÄ¸×îÐ¡µÄÓÐÀíÊý£¬
+æ–¯å¦çº³æ ‘
+è¿žåˆ†æ•°å±•å¼€ï¼Œåœ¨a/båˆ°c/dä¹‹é—´åˆ†æ¯æœ€å°çš„æœ‰ç†æ•°ï¼Œ
 https://en.wikipedia.org/wiki/Continued_fraction
 https://blog.csdn.net/lanchunhui/article/details/51719743?utm_source=blogxgwz4
-×î¼Ñ½¥½ø·ÖÊý£¬ Best rational within an interval£¬·Ö×Ó·ÖÄ¸×îÐ¡
-×î´ó¿ÕÍ¹°ü
+æœ€ä½³æ¸è¿›åˆ†æ•°ï¼Œ Best rational within an intervalï¼Œåˆ†å­åˆ†æ¯æœ€å°
+æœ€å¤§ç©ºå‡¸åŒ…
 
 http://picks.logdown.com/posts/209226-newtons-method-of-polynomial
-Å£¶Ùµü´ú
+ç‰›é¡¿è¿­ä»£
 
 excrt
 
 
 
-ÏßÐÔ»ùÈ¡½»
+çº¿æ€§åŸºå–äº¤
 
-½»Ò²ÊÇÏßÐÔ¿Õ¼ä¡£
+äº¤ä¹Ÿæ˜¯çº¿æ€§ç©ºé—´ã€‚
 
-ÒýÀí£ºÈç¹û$V1,V2$ÊÇÏßÐÔ¿Õ¼ä£¬ÇÒ$B1,B2$ÊÇ»ù£¬$W=B2\cap V1$£¬Èô$B1\cup(B2 - W)$ÏßÐÔÎÞ¹Ø£¬Ôò$W$ÊÇ$V1\cap V2$µÄ»ù¡£
+å¼•ç†ï¼šå¦‚æžœ$V1,V2$æ˜¯çº¿æ€§ç©ºé—´ï¼Œä¸”$B1,B2$æ˜¯åŸºï¼Œ$W=B2\cap V1$ï¼Œè‹¥$B1\cup(B2 - W)$çº¿æ€§æ— å…³ï¼Œåˆ™$W$æ˜¯$V1\cap V2$çš„åŸºã€‚
 
-Ö¤Ã÷£º¿¼ÂÇÈÎÒâµÄ v¡ÊV1¡ÉV2£¬ÄÇÃ´ v ¿ÉÒÔ±» B1,B2 ÏßÐÔ±íÊ¾¡£¿¼ÂÇÖ¤Ã÷ v ¿ÉÒÔ±» W ÏßÐÔ±íÊ¾¡£²»·ÁÁî v ¿ÉÒÔ±» S ºÍ T ¹²Í¬ÏßÐÔ±íÊ¾£¬ÆäÖÐ S¡ÊW£¬T¡ÊB?W£¬ÏÔÈ»£¬ÓÉÓÚ S ¿ÉÒÔ±» B1 ÏßÐÔ±íÊ¾£¬Èç¹û T ²»Îª¿Õ£¬Ôò T Óë B1 ÏÔÈ»ÏßÐÔÏà¹Ø£¬ÓëÌâÄ¿²»·û¡£Òò´Ë v ¿ÉÒÔÖ±½ÓÓÉ W ±íÊ¾³ö¡£
+è¯æ˜Žï¼šè€ƒè™‘ä»»æ„çš„ vâˆˆV1âˆ©V2ï¼Œé‚£ä¹ˆ v å¯ä»¥è¢« B1,B2 çº¿æ€§è¡¨ç¤ºã€‚è€ƒè™‘è¯æ˜Ž v å¯ä»¥è¢« W çº¿æ€§è¡¨ç¤ºã€‚ä¸å¦¨ä»¤ v å¯ä»¥è¢« S å’Œ T å…±åŒçº¿æ€§è¡¨ç¤ºï¼Œå…¶ä¸­ SâˆˆWï¼ŒTâˆˆB?Wï¼Œæ˜¾ç„¶ï¼Œç”±äºŽ S å¯ä»¥è¢« B1 çº¿æ€§è¡¨ç¤ºï¼Œå¦‚æžœ T ä¸ä¸ºç©ºï¼Œåˆ™ T ä¸Ž B1 æ˜¾ç„¶çº¿æ€§ç›¸å…³ï¼Œä¸Žé¢˜ç›®ä¸ç¬¦ã€‚å› æ­¤ v å¯ä»¥ç›´æŽ¥ç”± W è¡¨ç¤ºå‡ºã€‚
 
-µ«ÊÇÏÔÈ»£¬B1¡È(B2?W) ÓÐ¿ÉÄÜÏßÐÔÏà¹Ø¡£ÓÚÊÇÆäÊµÎÒÃÇÖ»Òª»»Ò»×é»ù£¬¼´°Ñ B2 »»Ò»ÏÂ¼´¿É¡£
+ä½†æ˜¯æ˜¾ç„¶ï¼ŒB1âˆª(B2?W) æœ‰å¯èƒ½çº¿æ€§ç›¸å…³ã€‚äºŽæ˜¯å…¶å®žæˆ‘ä»¬åªè¦æ¢ä¸€ç»„åŸºï¼Œå³æŠŠ B2 æ¢ä¸€ä¸‹å³å¯ã€‚
 
-¿¼ÂÇ bi ±íÊ¾ B2 ÖÐÇ° i ¸öÏòÁ¿×é³ÉµÄ»ù£¬ÁîÎÒÃÇÐÂ¹¹ÔìµÄ»ùÎª ¦Ã£¬µÚ i ¸öÏòÁ¿Îª ¦Ãi£¬ÔòÈô B2 ÖÐµÚ i ¸öÏòÁ¿ÄÜ¹»±» bi?1¡ÈB1 ±íÊ¾³ö£¬²»·ÁÁîËüÄÜ¹»²ð·ÖÎª S+T£¬ÆäÖÐ S?bi?1,T?B1£¬ÎÒÃÇÁî ¦Ãi=S£¨»òÕßT£©£»·ñÔòµÄ»° ¦Ãi ¾ÍÊÇ B2 ÖÐµÄµÚ i ¸öÏòÁ¿¡£
+è€ƒè™‘ bi è¡¨ç¤º B2 ä¸­å‰ i ä¸ªå‘é‡ç»„æˆçš„åŸºï¼Œä»¤æˆ‘ä»¬æ–°æž„é€ çš„åŸºä¸º Î³ï¼Œç¬¬ i ä¸ªå‘é‡ä¸º Î³iï¼Œåˆ™è‹¥ B2 ä¸­ç¬¬ i ä¸ªå‘é‡èƒ½å¤Ÿè¢« bi?1âˆªB1 è¡¨ç¤ºå‡ºï¼Œä¸å¦¨ä»¤å®ƒèƒ½å¤Ÿæ‹†åˆ†ä¸º S+Tï¼Œå…¶ä¸­ S?bi?1,T?B1ï¼Œæˆ‘ä»¬ä»¤ Î³i=Sï¼ˆæˆ–è€…Tï¼‰ï¼›å¦åˆ™çš„è¯ Î³i å°±æ˜¯ B2 ä¸­çš„ç¬¬ i ä¸ªå‘é‡ã€‚
 
-ÏÔÈ»£¬ÕâÑù¹¹Ôì³öµÄ»ùÂú×ã B1¡È(¦Ã?W) ÏßÐÔÎÞ¹Ø£¬Òò´ËÎÊÌâµÃÒÔÔÚ O(d3) µÄÊ±¼äÄÚ½â¾ö¡£ÆäÖÐ d ÎªÏòÁ¿Î¬Êý¡£
-
-
+æ˜¾ç„¶ï¼Œè¿™æ ·æž„é€ å‡ºçš„åŸºæ»¡è¶³ B1âˆª(Î³?W) çº¿æ€§æ— å…³ï¼Œå› æ­¤é—®é¢˜å¾—ä»¥åœ¨ O(d3) çš„æ—¶é—´å†…è§£å†³ã€‚å…¶ä¸­ d ä¸ºå‘é‡ç»´æ•°ã€‚
 
 
 
-³£ÏµÊýÏßÐÔµÝÍÆklogklogn/k^2logn
+
+
+å¸¸ç³»æ•°çº¿æ€§é€’æŽ¨klogklogn/k^2logn
 
 http://picks.logdown.com/posts/197262-polynomial-division
 
@@ -38,15 +38,15 @@ https://wenku.baidu.com/view/bac23be1c8d376eeafaa3111.html
 
 https://www.cnblogs.com/Troywar/p/9078013.html
 
-ÊýÁÐÇ°2kÏî¿ÉÒÔ±©Á¦Çó£¬»òÕßÉú³Éº¯Êý£¬È»ºóËã³ö±ÕºÏÊ½Ö®ºó¶àÏîÊ½ÇóÄæ
+æ•°åˆ—å‰2ké¡¹å¯ä»¥æš´åŠ›æ±‚ï¼Œæˆ–è€…ç”Ÿæˆå‡½æ•°ï¼Œç„¶åŽç®—å‡ºé—­åˆå¼ä¹‹åŽå¤šé¡¹å¼æ±‚é€†
 
 
 
-min_25É¸
+min_25ç­›
 
-¶¨ÆÚÖØ¹¹
+å®šæœŸé‡æž„
 
-À­¸ñÀÊÈÕ²åÖµ
+æ‹‰æ ¼æœ—æ—¥æ’å€¼
 
 
 
@@ -54,8 +54,8 @@ lucas/exLucas
 
 
 
-pick¶¨Àí
+pickå®šç†
 
 https://en.wikipedia.org/wiki/Gaussian_binomial_coefficient
 
-À©Õ¹Å·À­¶¨Àí
+æ‰©å±•æ¬§æ‹‰å®šç†

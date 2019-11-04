@@ -72,6 +72,7 @@ ul p, ol p, ul li, ol li {
 
 pre, code {
     word-break: break-all;
+    white-space: pre-wrap;
     margin: 0;
 }
 

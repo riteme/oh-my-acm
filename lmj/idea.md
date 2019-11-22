@@ -59,3 +59,15 @@ Farey级数，stern-brocot树，具体数学上P96（中文版）
 复杂度O(nlogn)
 
 https://blog.csdn.net/tyxacm/article/details/97156620
+
+
+
+
+
+
+
+循环多项式和牛顿多项式，参考复旦高代书
+
+
+
+写分数加法时候注意不要直接把分母乘起来，要先除掉gcd再算，防止爆longlong

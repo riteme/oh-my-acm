@@ -1,6 +1,6 @@
 /**
  * title: min_25_sieve
- * category: 数论 
+ * category: 数论
  * description: min_25_sieve.md
  */
 typedef long long LL;
@@ -58,7 +58,7 @@ void min25 () {
 	LL i , j , e , now , tmp;
 	for ( j = cnt ; j >= 1 ; j-- ) g[j] = h[j];
 	for ( i = tot ; i >= 1 ; i-- )
-		for ( j = cnt ; prime[i] * prime[i] <= value[j] ; j-- ) 
+		for ( j = cnt ; prime[i] * prime[i] <= value[j] ; j-- )
 			for ( e = 1 , now = prime[i] ; now * prime[i] <= value[j] ; e++ , now = now * prime[i] )
 				g[j] = ( g[j] + getf(prime[i],e) * (g[getpos(value[j]/now)]-h[prime[i]]+mod) + getf(prime[i],e+1) ) % mod;
 	printf ( "%lld\n" , (g[cnt] + 1) % mod );

@@ -1,6 +1,6 @@
 /**
  * title: 快速读入
- * category: 杂项
+ * category: 未分类
  * description: mmap.md
  */
 #include <unistd.h>  // STDIN_FILENO

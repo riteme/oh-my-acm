@@ -187,9 +187,9 @@ inline void c2tan2(const cir &c1, const cir &c2, seg &t1, seg &t2) {
 enum TangentStatus {
 	TPOINT = 1,
 	TNORMAL = 2,
-	TINNERT = 3,
+	TOUTERT = 3,
 	TCROSS = 4,
-	TOUTERT = 5,
+	TINNERT = 5,
 	TCONTAIN = 6
 };
 struct TangentResult {
@@ -209,9 +209,9 @@ TangentResult tangent(cir a, cir b) {
 	TangentStatus stat;
 	if (eq(r, 0)) stat = TPOINT;
 	else if (R + r <= d - EPS) stat = TNORMAL;
-	else if (eq(R + r, d)) stat = TINNERT;
+	else if (eq(R + r, d)) stat = TOUTERT;
 	else if (d - EPS >= R - r) stat = TCROSS;
-	else if (eq(R - r, d)) stat = TOUTERT;
+	else if (eq(R - r, d)) stat = TINNERT;
 	else stat = TCONTAIN;
 	// branch out if optimization is needed.
 	double

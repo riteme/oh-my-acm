@@ -183,6 +183,57 @@ inline void c2tan2(const cir &c1, const cir &c2, seg &t1, seg &t2) {
 	t1 = seg(p1 + u * h1, p2 - u * h2);
 	t2 = seg(p1 - u * h1, p2 + u * h2);
 }
+// 统一形式
+enum TangentStatus {
+	TPOINT = 1,
+	TNORMAL = 2,
+	TINNERT = 3,
+	TCROSS = 4,
+	TOUTERT = 5,
+	TCONTAIN = 6
+};
+struct TangentResult {
+	seg s[4];
+	TangentStatus stat;
+	bool swapped;
+};
+TangentResult tangent(cir a, cir b) {
+	// assert: a.c != b.c
+	bool swapped = false;
+	if (a.r < b.r) {
+		swap(a, b);
+		swapped = true;
+	}
+	vec p = b.c - a.c;
+	double R = a.r, r = b.r, d = p.len();
+	TangentStatus stat;
+	if (eq(r, 0)) stat = TPOINT;
+	else if (R + r <= d - EPS) stat = TNORMAL;
+	else if (eq(R + r, d)) stat = TINNERT;
+	else if (d - EPS >= R - r) stat = TCROSS;
+	else if (eq(R - r, d)) stat = TOUTERT;
+	else stat = TCONTAIN;
+	// branch out if optimization is needed.
+	double
+	k = r / R,
+	t1 = (R - r) / d, t2 = (R + r) / d,
+	L1 = R * t1, H1 = R * sqrt(max(0.0, 1 - t1 * t1)),
+	L2 = R * t2, H2 = R * sqrt(max(0.0, 1 - t2 * t2)),
+	l1 = L1 * k, h1 = H1 * k,
+	l2 = L2 * k, h2 = H2 * k;
+	p /= d;
+	vec o = {p.y, -p.x};
+	vec P1 = a.c + p * L1, P2 = a.c + p * L2;
+	vec O1 = o * H1, O2 = o * H2;
+	vec p1 = b.c + p * l1, p2 = b.c - p * l2;
+	vec o1 = o * h1, o2 = o * h2;
+	return {{
+		{P1 + O1, p1 + o1},
+		{P1 - O1, p1 - o1},
+		{P2 + O2, p2 - o2},
+		{P2 - O2, p2 + o2}
+	}, stat, swapped};
+}
 #define ACM_END
 
 struct Edge {

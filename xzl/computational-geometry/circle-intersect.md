@@ -7,4 +7,4 @@ H = h \\
 L + l = d
 \end{cases}
 $$
-令 $t = L - l = (R^2 - r^2) / d$，则 $L = (d + t) / 2$，$l = (d - t) / 2$，$H = h = \sqrt{R^2 - t^2}$。
+令 $t = L - l = (R^2 - r^2) / d$，则 $L = (d + t) / 2$，$l = (d - t) / 2$，$H = h = \sqrt{R^2 - L^2}$。

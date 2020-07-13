@@ -50,7 +50,7 @@ struct vec {
 	ld len2() const { return x * x + y * y; }
 	vec norm() const { ld l = len(); return vec(x / l, y / l); }
 	vec cw() const { return vec(y, -x); }
-	vec cw(ld t) const { ld c = cos(t), s = sin(t); return vec(-c * x + s * y, -s * x - c * y); }
+	vec cw(ld t) const { ld c = cos(t), s = sin(t); return vec(c * x + s * y, -s * x + c * y); }
 	vec ccw() const { return vec(-y, x); }
 	vec ccw(ld t) const { ld c = cos(t), s = sin(t); return vec(c * x - s * y, s * x + c * y); }
 	vec operator+(const vec &z) const { return vec(x + z.x, y + z.y); }

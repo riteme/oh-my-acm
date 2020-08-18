@@ -38,19 +38,24 @@ inline void dp(i64 *a, i64 *b, bool t = false) {
 #define ACM_BEGIN
 int dfn[NMAX + 10], low[NMAX + 10], now, cnt;
 int ed[NMAX + 10], fa[NMAX + 10], a[NMAX + 10];
-void dfs(int x) {
+void dfs(int x, int p) {
   dfn[x] = low[x] = ++now;
-  for (int v : G[x]) if (v != fa[x]) {
+  for (int v : G[x]) {
+    if (v != p) {
+      p = 0;  // 处理重边
+      continue;
+    }
     if (dfn[v]) {
       ed[v] = x, low[x] = min(low[x], dfn[v]);
       continue;
-    } fa[v] = x;
-    dfs(v);
+    }
+    fa[v] = x;
+    dfs(v, x);
     if (low[v] > dfn[x]) ; // 割边
     else if (low[v] == dfn[x]) {
-      a[1] = x;
-      for (cnt = 1, v = ed[x]; v != x; v = fa[v])
+      for (cnt = 0, v = ed[x]; v != x; v = fa[v])
         a[++cnt] = v;
+      a[++cnt] = x;
       // 环 a[1]...a[cnt]
     } else low[x] = min(low[x], low[v]);
 }}

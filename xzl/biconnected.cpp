@@ -85,8 +85,8 @@ void bcc(int u, int f = 0) {
         while (!stk.empty()) {
           Pair x = stk.top();
           stk.pop();
+          add(x.v);  // 这里先 v 后 u 保证顺序
           add(x.u);
-          add(x.v);
           if (x.u == u && x.v == v) break;
         }
         for (int v : T[p]) marked[v] = false;

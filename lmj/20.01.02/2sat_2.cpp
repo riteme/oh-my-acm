@@ -1,3 +1,8 @@
+/**
+ * title: 2sat_2
+ * category: Í¼ÂÛ 
+ * description: null
+ */
 #include <stdio.h>
 #include <algorithm>
 #include <queue>

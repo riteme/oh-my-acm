@@ -1,7 +1,7 @@
 /**
  * title: kdtree
  * category: 数据结构
- * description: null
+ * description: /dev/null
  */
 //not checked
 #include <stdio.h>

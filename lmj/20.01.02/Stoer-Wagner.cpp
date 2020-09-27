@@ -1,6 +1,6 @@
 /**
  * title: Stoer-Wagner
- * category: ÍøÂçÁ÷
+ * category: ç½‘ç»œæµ
  * description: Stoer-Wagner.md
  */
 
@@ -86,4 +86,3 @@ int main () {
 	}
 	return 0;
 }
-

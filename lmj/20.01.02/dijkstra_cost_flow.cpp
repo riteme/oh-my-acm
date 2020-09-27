@@ -1,9 +1,9 @@
 /**
- * title: dijkstra·ÑÓÃÁ÷
- * category: ÍøÂçÁ÷
+ * title: dijkstraè´¹ç”¨æµ
+ * category: ç½‘ç»œæµ
  * description: dijkstra_cost_flow.md
  */
- 
+
 
 #include <stdio.h>
 #include <algorithm>
@@ -86,7 +86,7 @@ void dij () {
 				dis[j->v] = dis[k.i] + j -> c + h[k.i] - h[j->v];
 				from[j->v] = j;
 				tmp.i = j -> v; tmp.c = dis[j->v];
-				q.push ( tmp ); 
+				q.push ( tmp );
 			}
 		}
 	}

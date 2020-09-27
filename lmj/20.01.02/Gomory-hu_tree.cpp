@@ -1,6 +1,6 @@
 /**
  * title: Gomory-hu_tree
- * category: ÍøÂçÁ÷
+ * category: ç½‘ç»œæµ
  * description: Gomory-hu_tree.md
  */
 

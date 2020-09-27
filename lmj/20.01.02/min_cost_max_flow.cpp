@@ -1,9 +1,9 @@
 /**
- * title: ·ÑÓÃÁ÷
- * category: ÍøÂçÁ÷
+ * title: è´¹ç”¨æµ
+ * category: ç½‘ç»œæµ
  * description: /dev/null
  */
- 
+
 #include <stdio.h>
 #include <algorithm>
 #include <queue>
@@ -87,7 +87,7 @@ void work () {
 			printf ( "-1\n" );
 			return ;
 		}
-		if ( z[1][i][j] == '1' || z[2][i][j] == '1' ) 
+		if ( z[1][i][j] == '1' || z[2][i][j] == '1' )
 			add ( 1 + get(i,j,0) , 1 + get(i,j,1) , (z[3][i][j] - '0'-1)/2 , 0 );
 		else
 			add ( 1 + get(i,j,0) , 1 + get(i,j,1) , (z[3][i][j] - '0')/2 , 0 );

@@ -1,6 +1,6 @@
 /**
  * title: mtt_and_Bernoulli_number
- * category: Êı¾İ½á¹¹
+ * category: æ•°æ®ç»“æ„
  * description: mtt_and_Bernoulli_number.md
  */
 
@@ -60,11 +60,11 @@ void calr(int m) {
     if (mx < m) init(m);
     rev[0] = 0;
     for (int j = 0; j < m; j++)
-        for (int k = 0; k < (1 << j); k++) 
+        for (int k = 0; k < (1 << j); k++)
             rev[k | (1 << j)] = rev[k] + (1 << (m - j - 1));
 }
 void dft(vc& a) {
-    int n = a.size(), r = 0; // ±£Ö¤ a ÊÇ 2 Ãİ 
+    int n = a.size(), r = 0; // ä¿è¯ a æ˜¯ 2 å¹‚
     while ((1 << r) < n) r++;
     calr(r);
     for (int i = 0; i < n; i++)
@@ -94,7 +94,7 @@ vi operator * (vi a, vi b) {
     while ((1 << r) < l) r++;
     N = 1<<r;
     a.resize(N), b.resize(N);
-    
+
     for ( i = 0 ; i < N ; i++ ) (a[i] += mod) %= mod, (b[i] += mod) %= mod;
     vc x(N) , y(N);
     vc dfta(N) , dftb(N) , dftc(N) , dftd(N);
@@ -125,7 +125,7 @@ vi operator * (vi a, vi b) {
         int dd = (ll)(y[i].y / N + 0.5) % mod;
         a[i] = (da + ((ll)(db + dc) << 15) + ((ll)dd << 30)) % mod;
     }
-    
+
     a.resize(l);
     for ( i = 0 ; i < l ; i++ )
         if ( a[i] < 0 ) a[i] += mod;

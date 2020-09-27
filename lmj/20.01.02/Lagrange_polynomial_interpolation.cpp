@@ -1,6 +1,6 @@
 /**
  * title: Lagrange polynomial interpolation
- * category: สýัง 
+ * category: ๆ•ฐๅญฆ
  * description: Lagrange_polynomial_interpolation.md
  */
 #include <stdio.h>
@@ -83,4 +83,3 @@ int main () {
 	work ();
 	return 0;
 }
-

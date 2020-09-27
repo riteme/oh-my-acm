@@ -1,4 +1,4 @@
-记号同whzzt18年集训队论文。 $f(x)$ 表示被求和的积性函数，并且在质数点值是是一个低阶多项式。 $h(n)=\sum\limits_{2\le p\le n \\ p是质数}f(p)$，$h_{n,m}=\sum\limits_{\begin{align} 2&\le x \le n\\ x不含\le m的&质因子或x是质数\end{align}}x^k$ ， $g_{n,m}=\sum\limits_{\begin{align} 2&\le x \le n\\ x不含\le m的&质因子或x是质数\end{align}}f(x)$，注意从 $2$ 开始。考虑线性筛的过程，每次筛掉一个最小的质数。对于 $h(n,m)$ 和 $g(n,m)$ 进行筛法时，考虑枚举 $i$ 的最小质因子，并且合数的最小质因子不超过 $\sqrt n$。
+记号同whzzt18年集训队论文。 $f(x)$ 表示被求和的积性函数，并且在质数点值是是一个低阶多项式。 $h(n)=\sum\limits_{2\le p\le n \\ p是质数}f(p)$，$h_{n,m}=\sum\limits_{\begin{aligned} 2&\le x \le n\\ x不含\le m的&质因子或x是质数\end{aligned}}x^k$ ， $g_{n,m}=\sum\limits_{\begin{aligned} 2&\le x \le n\\ x不含\le m的&质因子或x是质数\end{aligned}}f(x)$，注意从 $2$ 开始。考虑线性筛的过程，每次筛掉一个最小的质数。对于 $h(n,m)$ 和 $g(n,m)$ 进行筛法时，考虑枚举 $i$ 的最小质因子，并且合数的最小质因子不超过 $\sqrt n$。
 
 其中 $h(n)=h(n,0)$,  $h(n,m)$ 是筛 $h(n)$ 的过程，$g(n,0)$ 就是答案。
 

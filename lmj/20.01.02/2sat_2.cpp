@@ -1,7 +1,7 @@
 /**
  * title: 2sat_2
  * category: 图论
- * description: null
+ * description: /dev/null
  */
 #include <stdio.h>
 #include <algorithm>

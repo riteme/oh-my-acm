@@ -3,7 +3,7 @@
 # Project Setting
 DOCUMENT_TITLE = "Encyclopedia? of Algorithms"
 OUTPUT_PATH = 'output.html'
-ASSETS = ['style.css', '.katex']
+ASSETS = ['style.css', '.katex', 'assets']
 IGNORES = ['test*', 'tmp/*', 'README.md', 'readme.md']
 
 # Clang Settings

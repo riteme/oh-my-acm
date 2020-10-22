@@ -1,6 +1,6 @@
 /**
  * title: hungerian
- * category: 二分图匹配 
+ * category: 图论
  * description: hungerian.md
  */
 #include <stdio.h>

@@ -31,8 +31,7 @@ inline void push(int x) {
 		m[x].rev = 0;
 }}
 inline void pull(int x) { m[x].sum = m[x].w + m[m[x].lch].sum + m[m[x].rch].sum; }
-#define ROT(name, lch, rch) \
-inline void name(int x) { \
+#define ROT(name, lch, rch) inline void name(int x) { \
 	int y = m[x].lch; \
 	m[m[y].rch].fa = x; \
 	m[x].lch = m[y].rch; \

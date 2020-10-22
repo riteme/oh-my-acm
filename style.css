@@ -10,13 +10,13 @@
 
 body {
     font-size: 35px;
-    font-family: /*"Computer Modern",*/ KaTeX_Main, "Source Han Serif SC";
+    font-family: /*"Computer Modern",*/ KaTeX_Main, "Source Han Serif SC", serif;
     column-count: 2;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-    font-family: "Lato", "Segoe UI", "Source Han Sans SC";
+    font-family: "Lato", "Segoe UI", "Source Han Sans SC", sans-serif;
     margin: 0;
 }
 
@@ -29,7 +29,7 @@ h4 {
 }
 
 h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
-    font-family: "CMU Serif";
+    font-family: "CMU Serif", serif;
     font-weight: bold;
     font-size: 1.1em;
 }
@@ -39,12 +39,12 @@ h6 {
 }
 
 i, em {
-    font-family: "Lato", "Segoe UI", "Source Han Serif SC";
+    font-family: "Lato", "Segoe UI", "Source Han Serif SC", sans-serif;
 }
 
 b, strong {
     font-weight: normal;
-    font-family: "Segoe UI", "Source Han Sans SC";
+    font-family: "Segoe UI", "Source Han Sans SC", sans-serif;
 }
 
 p, li {
@@ -77,11 +77,11 @@ pre, code {
 }
 
 code {
-    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC", monospace;
 }
 
 pre, pre code {
-    font-family: Consolas, "Source Han Sans SC";
+    font-family: Consolas, "Source Han Sans SC", monospace;
 }
 
 pre {
@@ -107,7 +107,7 @@ th, td {
 }
 
 th {
-    font-family: "Lato", "Source Han Sans SC";
+    font-family: "Lato", "Source Han Sans SC", sans-serif;
     border-bottom: 4px solid black;
 }
 
@@ -153,7 +153,7 @@ img  {
 .source-code .document-path {
     font-weight: normal;
     font-size: .8em;
-    font-family: replacement, "CMU Concrete", "Source Han Sans SC";
+    font-family: replacement, "CMU Concrete", "Source Han Sans SC", monospace;
 }
 
 .source-code .document-path .path {
@@ -177,7 +177,7 @@ img  {
 
 .number, .code {
     display: inline-block;
-    font-family: Consolas, "Source Han Sans SC";
+    font-family: Consolas, "Source Han Sans SC", monospace;
     white-space: pre-wrap;
 }
 
@@ -223,7 +223,7 @@ img  {
 }
 
 .katex .cjk_fallback, .katex-display .cjk_fallback {
-    font-family: "Source Han Serif SC";
+    font-family: "Source Han Serif SC", serif;
     font-size: .9em;
 }
 
@@ -237,7 +237,7 @@ img  {
 }
 
 .toc .right {
-    font-family: CMU Serif;
+    font-family: CMU Serif, serif;
     font-size: 1.2em;
 }
 

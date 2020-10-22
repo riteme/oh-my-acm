@@ -2,6 +2,7 @@
  * title: Link-Cut Tree (splay)
  * category: 数据结构
  * rank: 998244353
+ * description: lct-splay.md
  */
 
 /**
@@ -29,43 +30,32 @@ inline void push(int x) {
 		m[m[x].rch].rev ^= 1;
 		m[x].rev = 0;
 }}
-inline void update(int x) { m[x].sum = m[x].w + m[m[x].lch].sum + m[m[x].rch].sum; }
-inline void lrot(int x) {
-	int y = m[x].lch;
-	m[m[y].rch].fa = x;
-	m[x].lch = m[y].rch;
-	m[y].rch = x;
-	if (m[x].fa > 0) {
-		int p = m[x].fa;
-		if (m[p].lch == x) m[p].lch = y;
-		else m[p].rch = y;
-	}
-	m[y].fa = m[x].fa;
-	m[x].fa = y;
-	m[y].sum = m[x].sum;
-	update(x); //update(y);
+inline void pull(int x) { m[x].sum = m[x].w + m[m[x].lch].sum + m[m[x].rch].sum; }
+#define ROT(name, lch, rch) \
+inline void name(int x) { \
+	int y = m[x].lch; \
+	m[m[y].rch].fa = x; \
+	m[x].lch = m[y].rch; \
+	m[y].rch = x; \
+	if (m[x].fa > 0) { \
+		int p = m[x].fa; \
+		if (m[p].lch == x) m[p].lch = y; \
+		else m[p].rch = y; \
+	} \
+	m[y].fa = m[x].fa; \
+	m[x].fa = y; \
+	/*m[y].sum = m[x].sum; */ \
+	pull(x); \
+	pull(y); \
 }
-inline void rrot(int x) {
-	int y = m[x].rch;
-	m[m[y].lch].fa = x;
-	m[x].rch = m[y].lch;
-	m[y].lch = x;
-	if (m[x].fa > 0) {
-		int p = m[x].fa;
-		if (m[p].lch == x) m[p].lch = y;
-		else m[p].rch = y;
-	}
-	m[y].fa = m[x].fa;
-	m[x].fa = y;
-	m[y].sum = m[x].sum;
-	update(x); //update(y);
-}
+ROT(lrot, lch, rch)
+ROT(rrot, lch, rch)
 inline void access(int x) {
 	if (m[x].fa > 0) access(m[x].fa);
 	push(x);
 }
-inline void splay(int x, bool accessed = false) {
-	if (!accessed) access(x);
+inline void splay(int x, bool ac = false) {
+	if (!ac) access(x);
 	while (m[x].fa > 0) {
 		int p = m[x].fa, p2 = m[p].fa;
 		if (p2 > 0) {
@@ -81,14 +71,14 @@ auto splice(int x) -> int {
 	m[m[p].rch].fa = -p;
 	m[p].rch = x;
 	m[x].fa = p;
-	update(p);
+	pull(p);
 	return p;
 }
 void expose(int x) {
 	splay(x);
 	m[m[x].rch].fa = -x;
 	m[x].rch = 0;
-	update(x);
+	pull(x);
 	while (m[x].fa) x = splice(x);
 }
 void link(int x, int y) {
@@ -113,7 +103,7 @@ void cut(int x) {
 	splay(y, true);
 	m[m[y].rch].fa = 0;
 	m[y].rch = 0;
-	update(y);
+	pull(y);
 }
 void evert(int x) {
 	expose(x);

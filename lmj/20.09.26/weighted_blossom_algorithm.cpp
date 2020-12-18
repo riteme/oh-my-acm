@@ -148,4 +148,3 @@ int main(){
 	}
 	a.mwpm();
 }
-

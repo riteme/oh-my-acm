@@ -41,7 +41,7 @@ int ed[NMAX + 10], fa[NMAX + 10], a[NMAX + 10];
 void dfs(int x, int p) {
   dfn[x] = low[x] = ++now;
   for (int v : G[x]) {
-    if (v != p) {
+    if (v == p) {
       p = 0;  // 处理重边
       continue;
     }

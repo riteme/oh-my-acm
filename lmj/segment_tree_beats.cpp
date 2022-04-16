@@ -1,6 +1,6 @@
 /**
  * title: segment_tree_beats
- * category: 数据结构
+ * category: 鏁版嵁缁撴瀯
  * description: segment_tree_beats.md
  */
 #include <stdio.h>

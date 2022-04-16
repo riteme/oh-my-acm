@@ -1,6 +1,6 @@
 /**
  * title: pam_end_modify
- * category: ×Ö·û´® 
+ * category: å­—ç¬¦ä¸² 
  * description: pam_end_modify.md
  */
 struct quick {

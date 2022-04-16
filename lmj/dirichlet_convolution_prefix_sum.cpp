@@ -1,6 +1,6 @@
 /**
  * title: dirichlet_convolution_prefix_sum
- * category: ÊýÂÛ 
+ * category: æ•°è®º 
  * description: dirichlet_convolution_prefix_sum.md
  */
 #include <stdio.h>

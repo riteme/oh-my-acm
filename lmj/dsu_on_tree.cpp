@@ -1,6 +1,6 @@
 /**
  * title: dsu_on_tree
- * category: Êı¾İ½á¹¹ 
+ * category: æ•°æ®ç»“æ„ 
  * description: dsu_on_tree.md
  */
 #include <stdio.h>
@@ -64,7 +64,7 @@ void dfs2 ( int i , int from , int clr ) {
 	}
 	//printf ( "%d %d\n" , i , ans );
 	changenum ( i , 1 );
-	//ÕâÀï¸ÕºÃ¸ù½Úµã²»»áºÍ×Ó²úÉú¹±Ï× 
+	//è¿™é‡Œåˆšå¥½æ ¹èŠ‚ç‚¹ä¸ä¼šå’Œå­äº§ç”Ÿè´¡çŒ® 
 	if ( clr ) {
 		addtree ( i , from , -1 );
 	}

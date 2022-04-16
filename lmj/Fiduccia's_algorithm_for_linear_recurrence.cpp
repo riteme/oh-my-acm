@@ -1,6 +1,6 @@
 /**
  * title: Fiduccia's_algorithm_for_linear_recurrence
- * category: ∂‡œÓ Ω
+ * category: Â§öÈ°πÂºè
  * description: Fiduccia's_algorithm_for_linear_recurrence.md
  */
 #include <bits/stdc++.h>
@@ -50,7 +50,7 @@ void calr(int m) {
 			rev[k | (1 << j)] = rev[k] + (1 << (m - j - 1));
 }
 void dft(vi& a) {
-	int n = a.size(), r = 0; // ±£÷§ a  « 2 √› 
+	int n = a.size(), r = 0; // ‰øùËØÅ a ÊòØ 2 ÂπÇ 
 	while ((1 << r) < n) r++;
 	calr(r);
 	for (int i = 0; i < n; i++)

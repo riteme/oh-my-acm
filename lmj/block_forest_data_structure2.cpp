@@ -1,7 +1,7 @@
 /**
  * title: block_forest_data_structure2
  * category: 图论 
- * description: dev/null
+ * description: /dev/null
  */
 struct node {
 	int v , u;

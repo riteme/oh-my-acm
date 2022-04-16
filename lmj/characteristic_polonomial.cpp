@@ -1,6 +1,6 @@
 /**
  * title: characteristic_polynomial
- * category: สýัง
+ * category: ๆ•ฐๅญฆ
  * description: characteristic_polynomial.md 
  */
 

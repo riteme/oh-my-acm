@@ -1,6 +1,6 @@
 /**
  * title: dominator_tree
- * category: Í¼ÂÛ 
+ * category: å›¾è®º 
  * description: dominator_tree.md 
  */
 #include <stdio.h>

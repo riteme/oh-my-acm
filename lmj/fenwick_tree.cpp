@@ -3,6 +3,7 @@
  * category: 数据结构 
  * description: fenwick_tree.md
  */
+const int mod = 998244353;
 int n , m , k;
 int a[510][510];
 int s[510][510] , si[510][510] , sj[510][510] , sij[510][510];

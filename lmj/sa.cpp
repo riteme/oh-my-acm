@@ -1,7 +1,7 @@
 /**
  * title: suffix_array
  * category: 字符串
- * description: null
+ * description: /dev/null
  */
 #include <stdio.h>
 #include <algorithm>

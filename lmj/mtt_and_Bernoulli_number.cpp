@@ -1,6 +1,6 @@
 /**
  * title: mtt_and_Bernoulli_number
- * category: Êı¾İ½á¹¹
+ * category: æ•°æ®ç»“æ„
  * description: mtt_and_Bernoulli_number.md
  */
 
@@ -64,7 +64,7 @@ void calr(int m) {
             rev[k | (1 << j)] = rev[k] + (1 << (m - j - 1));
 }
 void dft(vc& a) {
-    int n = a.size(), r = 0; // ±£Ö¤ a ÊÇ 2 Ãİ 
+    int n = a.size(), r = 0; // ä¿è¯ a æ˜¯ 2 å¹‚ 
     while ((1 << r) < n) r++;
     calr(r);
     for (int i = 0; i < n; i++)

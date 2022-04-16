@@ -1,6 +1,6 @@
 /**
  * title: Stoer-Wagner
- * category: ÍøÂçÁ÷
+ * category: ç½‘ç»œæµ
  * description: Stoer-Wagner.md
  */
 

@@ -1,6 +1,6 @@
 /**
  * title: suffix_array
- * category: ×Ö·û´®
+ * category: å­—ç¬¦ä¸²
  * description: null
  */
 #include <stdio.h>

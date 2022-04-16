@@ -1,6 +1,6 @@
 /**
  * title: 2sat_2
- * category: Í¼ÂÛ 
+ * category: å›¾è®º 
  * description: null
  */
 #include <stdio.h>

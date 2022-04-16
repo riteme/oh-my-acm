@@ -1,6 +1,6 @@
 /**
  * title: kdtree
- * category: 数据结构 
+ * category: 鏁版嵁缁撴瀯 
  * description: null
  */
 //not checked
